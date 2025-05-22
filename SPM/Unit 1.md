@@ -265,3 +265,15 @@ Instead of native apps, choose React Native to reuse 70% code.
 * **COCOMO** = Estimates using KLOC.
 * **Agile Estimation** = Uses story points, no fixed hours.
 
+
+
+### **Questions**
+
+1. What are the 3 pillars of SPM?
+2. What is the difference between Agile and Waterfall?
+3. What are the 4 areas of focus in SPM?
+4. What is the purpose of a SPMP?
+5. What are the 3 types of project plans?
+6. What is COCOMO and how does it work?
+7. What is Agile Estimation and how does it work?
+8. What is the decision process for choosing between options?
