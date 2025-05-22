@@ -277,3 +277,26 @@ Instead of native apps, choose React Native to reuse 70% code.
 6. What is COCOMO and how does it work?
 7. What is Agile Estimation and how does it work?
 8. What is the decision process for choosing between options?
+
+
+### **Quiz**
+
+1. What is the first step in the SDLC?
+2. What is the difference between a project and a process?
+3. What is the role of a project manager?
+4. What are the 3 constraints of a project?
+5. What is the difference between Agile and Scrum?
+6. What is the purpose of a Burndown chart?
+7. What is the difference between a task and an activity?
+8. What is the role of a product owner?
+
+Answers:
+
+1. Requirements gathering.
+2. A project has a specific goal and end date, while a process is ongoing.
+3. The project manager is responsible for planning, organizing, and controlling the project.
+4. The 3 constraints of a project are scope, time, and cost.
+5. Agile is a project management methodology, while Scrum is a specific Agile framework.
+6. A Burndown chart is used to track the remaining work in a project.
+7. A task is a specific piece of work, while an activity is a collection of tasks.
+8. The product owner is responsible for defining the product backlog and ensuring it is up-to-date.
