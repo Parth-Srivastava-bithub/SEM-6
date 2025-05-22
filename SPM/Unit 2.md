@@ -115,9 +115,9 @@ Visual and clear — perfect for team coordination.
 
 🧠 **Explanation:**
 
-* **Gantt** is great for showing what’s happening *when*. Think of it like a calendar bar view.
-* **PERT** focuses on dependencies and risk — more like a map of how things connect.
-* Use Gantt for **clarity**, PERT for **accuracy under uncertainty**.
+* **Gantt** is great for showing what’s happening *when*. Think of it like a calendar bar view, where you can quickly see which tasks are happening at the same time and how long they take.
+* **PERT** focuses on dependencies and risk — more like a map of how things connect. It visualizes the relationships between tasks and shows how long each task takes, as well as the **critical path**.
+* Use Gantt for **clarity**, PERT for **accuracy under uncertainty**. Gantt is more straightforward and easier to understand, while PERT is more detailed and better suited for complex projects with many dependencies and risks.
 
 ---
 
