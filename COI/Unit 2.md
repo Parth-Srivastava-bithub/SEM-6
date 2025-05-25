@@ -1,6 +1,3 @@
-Here’s your **Hinglish guide** on **Powers of Parliament, President, PM, Judiciary, and State Executives** – Simplified for easy understanding:  
-
----
 
 ## **1. Indian Parliament – Powers & Functions**  
 ### **1.1 Lok Sabha vs Rajya Sabha**  
