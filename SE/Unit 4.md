@@ -14,11 +14,24 @@
   - Requirement Coverage
 
 ### **1.2 Testing Principles**
-1. **Exhaustive testing is impossible** (Pareto principle: 80% of defects in 20% of code)
-2. **Early testing** (Shift-left approach)
-3. **Defect clustering** (Most bugs in complex modules)
-4. **Pesticide paradox** (Tests need regular updates)
-5. **Testing shows presence of defects** (Not their absence)
+### 🧪 **Testing Principles Summary**
+
+1. **Exhaustive Testing Impossible** – Har path test karna impossible hai
+   🔁 *Pareto Rule*: 80% bugs → 20% code
+
+2. **Early Testing** –
+   🕒 *Shift Left*: Jaldi start karo, kam kharcha hoga
+
+3. **Defect Clustering** –
+   🧠 *Complex modules = Bug magnet*
+
+4. **Pesticide Paradox** –
+   🐛 *Same tests baar baar = no new bugs* → Update karo tests
+
+5. **Testing Shows Presence, Not Absence** –
+   👀 *Bug dikhe toh proof hai, nahi dikha toh proof nahi hai*
+
+---
 
 ## **2. Dynamic Testing Techniques**
 
