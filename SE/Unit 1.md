@@ -93,30 +93,37 @@ A complete software system consists of:
 - Software engineering education
 
 ## **5. Software Engineering Processes**
+**a) Requirement Engineering**
+Client kya chahta hai, use likhna, samajhna, aur confirm karna.
+📝 Example: Agile mein user stories likhna jaise "User should login with email."
 
-### **a) Requirement Engineering**
-- Gathering, analyzing, and documenting requirements
-- Example: User stories in Agile development
+---
 
-### **b) System Design**
-- Architectural and detailed design
-- Example: Creating UML diagrams
+**b) System Design**
+System ka skeleton banana — architecture aur module level design.
+📐 Example: UML diagrams jaise class diagram, flowcharts, DB schema.
 
-### **c) Implementation**
-- Actual coding
-- Example: Writing Python modules
+---
 
-### **d) Testing**
-- Unit testing
-- Integration testing
-- System testing
-- Example: JUnit tests in Java
+**c) Implementation**
+Ab design ke hisaab se code likhna.
+👨‍💻 Example: Python modules likhna for backend APIs.
 
-### **e) Maintenance**
-- Corrective (bug fixes)
-- Adaptive (new environments)
-- Perfective (new features)
-- Example: Windows 10 updates
+---
+
+**d) Testing**
+Code sahi chal raha hai ya nahi, check karna har level pe.
+🧪 Example: JUnit se unit test karna Java code ka, ya Selenium se UI test.
+
+---
+
+**e) Maintenance**
+Product chalne ke baad bugs fix karna, naye features daalna, ya naye OS pe chalana.
+🔧 Example: Windows 10 ke updates (bug fix + naye features).
+
+---
+
+
 
 ## **6. Comparison with Conventional Engineering**
 
