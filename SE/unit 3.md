@@ -224,6 +224,100 @@ Software design is the **engineering blueprint** phase that transforms requireme
 | **Disadvantages**    | Potential redesign of modules | Late system integration      |
 | **Best For**         | New systems                   | Component libraries          |
 
+
+
+---
+
+## 🧠 **5.1 Halstead’s Software Science** – *Script ka Weight Kitna Hai?*
+
+* **n1 = Unique operators** (verbs in script: `if`, `for`, `=`, etc.)
+* **n2 = Unique operands** (nouns: variables like `score`, `name`)
+* **N1 = Total operators used** (kitni baar `if`, `=`, etc.)
+* **N2 = Total operands used**
+
+Now:
+
+* **Vocabulary (n)** = All unique words in script (n1 + n2)
+* **Length (N)** = Total words (N1 + N2)
+* **Volume (V)** = Kitna bada script hai
+* **Difficulty (D)** = Samajhne mein kitni mushkil
+* **Effort (E)** = Script likhne ka total mental effort
+* **Time (T)** = Approx kitna time lagega
+
+💡 **Metaphor**: Soch ek **dialogue-heavy movie** hai — zyada unique dialogues = zyada volume, aur complex scenes = zyada effort.
+
+---
+
+## 📏 **5.2 Function Point Analysis (FPA)** – *Kitne Scenes, Kitne Actors?*
+
+* Tumhari movie ke **scenes (Inputs/Outputs)** kitne hain?
+
+  * **EI** = External Inputs (User sends form)
+  * **EO** = Outputs (System replies)
+  * **EQ** = Enquiries (User asks, gets info)
+  * **ILF** = Internal database
+  * **EIF** = Uses data from another movie 😜
+
+* Har cheez ko weight do (Low, Avg, High)
+
+* **UFP** = All items × their weight
+
+* **VAF** = Adjust karo based on movie environment (14 factors like budget, team, tools)
+
+➡️ Final **Function Points** = UFP × VAF
+
+💡 **Metaphor**: Jitne **characters, scenes, and complexity**, utna **movie ka rating** (FP)
+
+---
+
+## 🔀 **5.3 Cyclomatic Complexity** – *Kitne Plot Twists?*
+
+* **If/Else** = Plot turns
+* More **branches** = More complexity
+
+Formula:
+
+* **V(G) = P + 1** (P = decisions)
+* Ya **V(G) = e - n + 2p** (flowchart style)
+
+⚠️ V(G) > 50 = Too twisty, hard to test
+⚠️ V(G) > 100 = Rewrite the script bro!
+
+💡 **Metaphor**: Ek suspense movie mein agar har scene mein twist hai, audience confuse ho jaayegi!
+
+---
+
+## ⚙️ **6.1 Maintainability Index** – *Movie Kitni Easily Dub Ho Sakti Hai?*
+
+MI = 171 - 5.2×ln(V) - 0.23×V(G) - 16.2×ln(LOC)
+Jitna low MI, utni mushkil maintain karna.
+
+💡 **Metaphor**: Zyada scenes + zyada dialogues = dubbing karna nightmare 😬
+
+---
+
+## 📊 **6.2 Industry Benchmarks** – *Reviewers ka Scorecard*
+
+| Metric                         | Excellent | Acceptable | Poor |
+| ------------------------------ | --------- | ---------- | ---- |
+| Cyclomatic Complexity          | 1-10      | 11-20      | >20  |
+| Function Points / PM           | >20       | 10–20      | <10  |
+| CBO (Coupling Between Objects) | <5        | 5–10       | >10  |
+
+💡 **Metaphor**: Ye hai **IMDb-like benchmarks** — agar code ka rating low hai, to reshoot chahiye bhai 😆
+
+---
+
+## 🧰 **7. Tools** – *Apne Production Tools*
+
+* **SonarQube, Checkstyle, CodeMR** = Code reviewers
+* **FPWorkBench** = FP calculator
+* **Metrics plugins (IDE)** = Director ke assistant 🎥
+
+---
+
+
+
 ## **5. Software Measurement and Metrics**
 
 ### **5.1 Halstead's Software Science**
