@@ -63,9 +63,14 @@
   | **Bottom-Up**     | Test from leaf to parent modules     | Easy driver creation              |
   | **Sandwich**      | Combine top-down and bottom-up       | Balanced approach                 |
 
-- **Test Doubles:**
-  - **Stubs:** Simulate called components (dummy returns)
-  - **Drivers:** Simulate calling environment
+
+* **Stub**: Tu ek app bana raha, jisme user data server se aata. Ab server ready nahi, toh tu ek fake banda bitha diya — jo hamesha “Parth” naam ka user deta rahe. Bus response milta rahe, real kaam nahi karta. Yehi stub hai.
+
+* **Driver**: Tu ek salary calculator function likh raha. Abhi koi use karne wala system nahi bana (na app, na UI), toh tu khud ek chhota test likhta hai jo us function ko call kare — ye driver hai, jo environment banata hai function ko test karne ke liye.
+
+Stub = andar se fake data
+Driver = bahar se fake caller
+
 
 ### **2.3 System Testing**
 - **Types:**
