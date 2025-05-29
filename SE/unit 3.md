@@ -89,7 +89,6 @@ Architectural design establishes the **high-level structure** that:
 [Payment]   [Inventory]
    ↓           ↓
 [DB Access] [Warehouse API]
-```
 
 #### **Pseudocode Standards**
 - **Best Practices:**
