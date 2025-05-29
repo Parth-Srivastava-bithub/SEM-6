@@ -21,47 +21,49 @@ Software design is the **engineering blueprint** phase that transforms requireme
 - **Separation of Concerns:** Isolating different functionalities
 
 ## **2. Architectural Design**
+### 🏗️ 2.1 Purpose and Objectives — *City Planning*
 
-### **2.1 Purpose and Objectives**
-Architectural design establishes the **high-level structure** that:
-- Defines system components
-- Specifies component interactions
-- Addresses quality attributes (performance, security, etc.)
+* **Components** = City ke parts (ghar, school, hospital)
+* **Interactions** = Roads, bridges (kaise connect honge)
+* **Quality** = City smooth chale (traffic = performance, police = security)
 
-### **2.2 Common Architectural Patterns**
+---
 
-#### **Layered Architecture**
-- **Structure:** Hierarchical layers with strict calling rules
-- **Typical Layers:**
-  1. Presentation (UI)
-  2. Business Logic
-  3. Data Access
-- **Example:** Traditional web applications (J2EE, .NET MVC)
+### 🏛️ 2.2 Common Architectural Patterns — *City ke Layout Designs*
 
-#### **Microservices Architecture**
-- **Characteristics:**
-  - Independently deployable services
-  - Lightweight communication (HTTP/REST)
-  - Decentralized data management
-- **Example:** Netflix (500+ microservices)
+#### **1. Layered Architecture = G+3 Building**
 
-#### **Event-Driven Architecture**
-- **Components:**
-  - Event producers
-  - Event consumers
-  - Message brokers
-- **Patterns:**
-  - Publisher-Subscriber
-  - Event Sourcing
-- **Example:** Stock trading systems
+* Ground floor: **Data access (basement storage)**
+* 1st floor: **Business logic (offices)**
+* 2nd floor: **UI (reception)**
+* Rule: Neeche waala bina upar waale se directly baat nahi karega.
 
-### **2.3 Architectural Documentation**
-- **4+1 View Model** (Philippe Kruchten):
-  - Logical View (class diagrams)
-  - Process View (concurrency)
-  - Development View (module organization)
-  - Physical View (deployment)
-  - Scenarios (use cases)
+#### **2. Microservices = Colony of Independent Houses**
+
+* Har house = ek service (e.g., ek hospital, ek school)
+* Alag power meter, water tank = **Independent deploy**
+* Communicate karte hain phone se = **REST APIs**
+
+#### **3. Event-Driven = City’s Emergency Alarm System**
+
+* Fire = **Event trigger**
+* Fire station = **Consumer**
+* Alarm system = **Message broker**
+* Har department ka apna kaam, bas signal milte hi activate ho jaate hain.
+
+---
+
+### 📘 2.3 Architectural Documentation — *City Map from Different Angles (4+1 Views)*
+
+1. **Logical View** = City ka layout (ghar, road diagram)
+2. **Process View** = Kaun kya kaam karega, kis speed se (concurrency)
+3. **Development View** = Kis builder ne kya banaya (modules)
+4. **Physical View** = Real location pe kaise deploy kiya (Google Maps view)
+5. **Scenarios** = Real-life usage (agar fire lagi to kya process chalega)
+
+---
+
+
 
 ## **3. Low-Level (Detailed) Design**
 
@@ -171,6 +173,46 @@ Architectural design establishes the **high-level structure** that:
   - Creational (Factory, Singleton)
   - Structural (Adapter, Composite)
   - Behavioral (Observer, Strategy)
+
+
+
+---
+
+### 🍽️ SOLID Principles = Ek Acche Restaurant ke 5 Rules
+
+---
+
+### 1. **Single Responsibility** – *Har banda sirf ek kaam kare*
+
+👨‍🍳 Chef sirf cooking karega, waiter sirf serving.
+➡️ Ek reason se hi kaam badlega. Chef ko serving nahi aani chahiye.
+
+---
+
+### 2. **Open/Closed** – *Menu update ho sakta hai, purani dishes ko chhede bina*
+
+➡️ Nayi dishes add karo, lekin existing dishes ka recipe mat todho.
+
+---
+
+### 3. **Liskov Substitution** – *Chef ka assistant bhi cooking sambhal le bina gadbad kiye*
+
+➡️ Subclass (assistant) ko bhi parent (chef) ki tarah kaam aana chahiye.
+
+---
+
+### 4. **Interface Segregation** – *Waiter ko cooking tools ka interface mat do*
+
+➡️ Har role ko sirf apne kaam ka button do. Jyada options confuse karenge.
+
+---
+
+### 5. **Dependency Inversion** – *Chef ko fridge ka brand nahi chahiye, bas abstract “cold storage” chahiye*
+
+➡️ High-level modules ko low-level pe depend nahi karna chahiye, dono abstraction pe depend karein.
+
+---
+
 
 ### **4.3 Top-Down vs Bottom-Up**
 
