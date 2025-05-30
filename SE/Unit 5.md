@@ -2,19 +2,15 @@
 
 ## **1. Software Maintenance**
 
-### **1.1 Software as an Evolutionary Entity**
-- **Lehman's Laws of Software Evolution**:
-  1. **Continuing Change**: Systems must adapt or become progressively less useful
-  2. **Increasing Complexity**: Systems grow more complex unless actively maintained
-  3. **Self-Regulation**: System evolution processes are self-regulating
-  4. **Conservation of Organizational Stability**: Development speed remains constant
-  5. **Conservation of Familiarity**: Incremental changes preserve knowledge
+Lehman's Laws yeh bolta hai ki **software zinda organism jaise hota hai** — use grow karna padta hai, warna useless ho jaata hai.
 
-### **1.2 Need for Maintenance**
-- **Industry Statistics**:
-  - 60-75% of total software lifecycle costs
-  - 40-60% of IT budgets allocated to maintenance
-  - Typical maintenance ratio: 1 developer maintains 50K-100K LOC
+### Important points:
+
+1. **Continuing Change** – Software ko update karte raho, warna outdated ho jaayega.
+2. **Increasing Complexity** – Har update se complexity badhegi, jab tak clean-up na karo.
+3. **Self-Regulation** – Software evolve hone ka apna pace hota hai, force karoge to problems aayengi.
+4. **Organizational Stability** – Team ka speed fix hota hai, suddenly zyada kaam nahi nikal sakte.
+5. **Conservation of Familiarity** – Small changes hi safe hote hain, nahi to system samajhna mushkil ho jaata hai.
 
 ### **1.3 Categories of Maintenance**
 | **Type**          | **Description**                                                                 | **Example**                                      | **% Effort** |
@@ -25,35 +21,53 @@
 | **Preventive**     | Improving future maintainability                                               | Refactoring legacy code                         | 5%          |
 
 ### **1.4 Cost of Maintenance**
-- **Factors Affecting Cost**:
-  - System age (cost increases exponentially after 5 years)
-  - Documentation quality
-  - Staff turnover
-  - Original design quality
 
-- **Cost Distribution**:
+### 🔧 **Factors affecting maintenance cost:**
 
-![alt text](image.png)
+* **System age** – Purane system = zyada bugs + hard to understand
+* **Poor documentation** – Naya banda struggle karega samajhne mein
+* **High staff turnover** – Knowledge chali jaati hai
+* **Bad original design** – Har change pain deta hai
 
-### **1.5 Software Re-engineering**
-- **Process Model**:
-  1. Inventory analysis
-  2. Document reconstruction
-  3. Reverse engineering
-  4. Code restructuring
-  5. Data restructuring
-  6. Forward engineering
+### 💸 **Cost distribution:**
 
-- **Benefits**:
-  - 30-50% cost savings vs. new development
-  - Preserves business logic
-  - Improves maintainability
+* **Corrective (bug fixing)** – \~20%
+* **Adaptive (new environment)** – \~25%
+* **Perfective (feature upgrade)** – \~50%
+* **Preventive (cleaning code)** – \~5%
 
-### **1.6 Reverse Engineering**
-- **Approaches**:
-  - **Design Recovery**: Recreating higher-level abstractions
-  - **Program Understanding**: Analyzing control/data flow
-  - **Visualization**: Generating UML diagrams from code
+Old code = emotional damage + financial damage.
+
+### **Software Re-engineering**
+
+* **Purpose**: Purane software ko better banana (na ki naya banana)
+* **Steps**:
+
+  1. **Inventory Analysis** – Kaunsa software valuable hai?
+  2. **Document Reconstruction** – Poori documentation taiyaar karo
+  3. **Reverse Engineering** – Code ka logic, design samjho
+  4. **Code Restructuring** – Spaghetti code ko clean karo
+  5. **Data Restructuring** – Database schemas ko improve karo
+  6. **Forward Engineering** – Naye tech mein rebuild karo
+
+✅ **Benefits**:
+
+* Kaafi cost-effective (30–50% bachao)
+* Business rules reuse hote hain
+* Maintenance asaan ho jaata hai
+
+---
+
+### **Reverse Engineering**
+
+* **Motive**: Code se design samajhna (without changing code)
+* **Approaches**:
+
+  * **Design Recovery** – Abstract ideas (classes, architecture) recover karo
+  * **Program Understanding** – Control & data flow analyse karo
+  * **Visualization** – Tools se diagrams (UML, DFD) banao
+
+👉 Zarurat padti hai jab source code toh hai, par documentation missing hai.
 
 - **Tools**:
   - IDA Pro (Binary analysis)
@@ -62,45 +76,57 @@
 
 ## **2. Software Configuration Management (SCM)**
 
-### **2.1 Core Activities**
-1. **Version Control**:
-   - File versioning
-   - Branching strategies (Git Flow, GitHub Flow)
-   - Atomic commits
+### **Core Activities**
 
-2. **Change Control**:
-   - Request submission
-   - Impact analysis
-   - Approval workflow
-   - Implementation tracking
+🔁 **Version Control**
 
-3. **Build Management**:
-   - Continuous Integration
-   - Reproducible builds
-   - Dependency management
+* *File Versioning*: Har change ka snapshot
+* *Branching*: Features/test/fixes alag branch mein (Git Flow, GitHub Flow)
+* *Atomic Commits*: Ek chhoti meaningful change per commit
 
-### **2.2 Change Control Process**
+🔄 **Change Control**
 
-![alt text](image-1.png)
+* *Request Submission*: Feature ya bug change ka formal request
+* *Impact Analysis*: Dekhna change ka effect kahaan-kahaan padega
+* *Approval Workflow*: Approve -> Implement -> Track
 
-### **2.3 Version Control Strategies**
-- **Centralized vs Distributed**:
-  | **Aspect**        | **Centralized (SVN)**       | **Distributed (Git)**         |
-  |-------------------|----------------------------|-------------------------------|
-  | **Repository**    | Single central server      | Every clone is full repo      |
-  | **Branching**     | Expensive                  | Cheap and fast                |
-  | **Work Offline**  | Limited                    | Full functionality            |
+⚙️ **Build Management**
 
-### **2.4 CASE Tools Overview**
-- **Categories**:
-  - **Upper CASE**: Requirements/design tools (Enterprise Architect)
-  - **Lower CASE**: Implementation tools (Eclipse)
-  - **Integrated CASE**: Full lifecycle (IBM Rational)
-  
-- **Popular Tools**:
-  - Version Control: Git, SVN
-  - Build Automation: Jenkins, Maven
-  - Change Management: JIRA, Bugzilla
+* *CI (Continuous Integration)*: Har push ke saath automatic build+test
+* *Reproducible Builds*: Har build repeatable ho (same output every time)
+* *Dependency Management*: Required libraries ka proper handle
+
+
+### **Version Control Strategies**
+
+| **Aspect**   | **Centralized (SVN)** | **Distributed (Git)**      |
+| ------------ | --------------------- | -------------------------- |
+| Repository   | One central server    | Every user has full repo   |
+| Branching    | Heavy & slow          | Lightweight & fast         |
+| Offline Work | Limited               | Full offline functionality |
+
+---
+
+### **CASE Tools (Computer-Aided Software Engineering)**
+
+**🧠 Upper CASE** – Planning & design
+
+> *Tool:* Enterprise Architect
+
+**🛠 Lower CASE** – Coding & testing
+
+> *Tool:* Eclipse, NetBeans
+
+**🔄 Integrated CASE** – End-to-end development
+
+> *Tool:* IBM Rational, Visual Paradigm
+
+**Popular Tools by Category:**
+
+* **Version Control**: Git, SVN
+* **Build Automation**: Jenkins, Maven
+* **Change Management**: JIRA, Bugzilla
+
 
 ## **3. Software Project Management**
 
@@ -129,14 +155,18 @@ PM = 3.0 × (50)^1.12 ≈ 3.0 × 79.6 ≈ 239 person-months
   - 20 FP/month (average)
   - 30+ FP/month (high experience)
 
-### **3.2 Resource Allocation**
-- **Team Structures**:
-  - **Chief Programmer Team** (Hierarchical)
-  - **Democratic Team** (Egoless approach)
-  - **Hybrid Team** (Scrum teams)
+### **3.2 Resource Allocation Summary**
 
-- **Brooks' Law**:
-  "Adding manpower to a late software project makes it later"
+
+**👥 Team Structures:**
+
+* **Chief Programmer Team** – One lead, rest support (Good for small, critical tasks)
+* **Democratic (Egoless) Team** – Equal say, open communication (Best for creative work)
+* **Hybrid/Scrum Team** – Mix of roles (PO, Scrum Master, Devs)
+
+**📉 Brooks’ Law:**
+Adding more people late = More delays due to training + coordination overhead.
+
 
 ### **3.3 Risk Management**
 #### **Risk Identification**
@@ -170,10 +200,6 @@ PM = 3.0 × (50)^1.12 ≈ 3.0 × 79.6 ≈ 239 person-months
 2. User involvement (15%)
 3. Executive support (12%)
 4. Realistic schedules (10%)
-
-### **4.3 Cost Distribution**
-
-![alt text](image-2.png)
 
 ## **5. Emerging Trends**
 - **AI in Maintenance**:
