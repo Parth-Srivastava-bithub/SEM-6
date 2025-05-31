@@ -1,294 +1,319 @@
+# **Ultra-Detailed Guide to Hadoop Ecosystem Frameworks**
+
+## **1. Apache Pig (Data Flow Language for Hadoop)**
+
 ### **1.1 Introduction to Pig**
-
-**What is Pig?**
-Apache Pig is a **high-level platform** for processing large datasets on Hadoop.
-It uses **Pig Latin**, a data flow language that abstracts the complexity of writing raw MapReduce code.
-
-**Why Use Pig?**
-
-* Writing Java-based MapReduce is tedious.
-* Pig simplifies it with a few lines of script.
-* It **automatically optimizes** the execution under the hood.
-* Best for **ETL tasks** like data cleaning, transformation, and preparation.
-
-**Real-Life Use Case:**
-You're cleaning millions of log entries — remove bot traffic, extract useful fields, and generate user stats — Pig does this easily.
-
----
+- **Purpose:** High-level platform for creating MapReduce programs
+- **Components:**
+  - **Pig Latin:** Scripting language (procedural SQL-like syntax)
+  - **Grunt Shell:** Interactive shell for executing Pig commands
+  - **Execution Engine:** Converts scripts to MapReduce jobs
 
 ### **1.2 Execution Modes**
-
-| **Mode**  | **Description**                          | **When to Use**                 |
-| --------- | ---------------------------------------- | ------------------------------- |
-| Local     | Runs on a single JVM without Hadoop/HDFS | Testing or dev with small files |
-| MapReduce | Converts Pig script into MapReduce jobs  | Production & large-scale jobs   |
-
-**Commands:**
-
-```bash
-pig -x local script.pig    # Local mode
-pig script.pig             # Default is MapReduce mode
-```
-
----
+| Mode | Description | Use Case |
+|------|------------|----------|
+| **Local Mode** | Runs on single JVM (no HDFS) | Development/testing |
+| **MapReduce Mode** | Runs on Hadoop cluster | Production processing |
 
 ### **1.3 Pig vs Traditional Databases**
+| Feature | Pig | RDBMS |
+|---------|-----|-------|
+| Schema | Optional (schema-on-read) | Required (schema-on-write) |
+| Data Types | Simple (int, chararray, etc.) | Complex (date, decimal, etc.) |
+| Language | Procedural (Pig Latin) | Declarative (SQL) |
+| Optimization | Limited | Advanced query optimization |
 
-| **Feature** | **Pig**                     | **SQL DB**                  |
-| ----------- | --------------------------- | --------------------------- |
-| Schema      | Optional (schema-on-read)   | Mandatory (schema-on-write) |
-| Latency     | High (batch jobs)           | Low (interactive queries)   |
-| Scale       | Massive (petabytes)         | Limited (terabytes usually) |
-| Programming | Procedural (how data flows) | Declarative (what you want) |
-
-**TLDR:** Pig = Data pipelines, SQL = Interactive querying.
-
----
-
-### **1.4 Pig Latin Basics**
-
-#### **Data Types:**
-
-* **Scalar:** int, float, chararray (string), long, double, boolean.
-* **Complex:**
-
-  * **Tuple:** ordered set of fields → `(1, "apple")`
-  * **Bag:** collection of tuples → `{(1,"a"), (2,"b")}`
-  * **Map:** key-value pairs → `[name#“Parth”, age#21]`
-
-#### **Example Pig Script Breakdown:**
-
+### **1.4 Pig Latin Fundamentals**
+**Basic Operations:**
 ```pig
--- Load CSV data from HDFS
-logs = LOAD '/data/weblogs' USING PigStorage(',') AS (user:chararray, url:chararray);
+-- Loading data
+data = LOAD 'input.txt' USING PigStorage(',') AS (name:chararray, age:int);
 
--- Remove bots
-clean_logs = FILTER logs BY NOT (url MATCHES '.*bot.*');
+-- Transformation
+filtered = FILTER data BY age > 18;
 
--- Group by user
-user_groups = GROUP clean_logs BY user;
-
--- Count how many times each user visited
-user_counts = FOREACH user_groups GENERATE group, COUNT(clean_logs);
-
--- Store output in HDFS
-STORE user_counts INTO '/output/user_analytics';
+-- Storage
+STORE filtered INTO 'output' USING PigStorage();
 ```
 
----
+**Key Operators:**
+- `LOAD`/`STORE`: Data input/output
+- `FILTER`: Row selection
+- `FOREACH`: Column operations
+- `GROUP`: Aggregation
+- `JOIN`: Table combining
+- `ORDER BY`: Sorting
+- `DISTINCT`: Deduplication
 
 ### **1.5 User Defined Functions (UDFs)**
+**Types:**
+1. **Eval Functions:** Process fields and return values
+2. **Filter Functions:** Return boolean for filtering
+3. **Load/Store Functions:** Custom data formats
 
-Sometimes Pig’s built-in functions aren’t enough. So, you can write **custom functions** in:
-
-* **Java (official way)**
-* **Python (via Jython/PyPig)**
-
-#### **Java UDF Example:**
-
+**Example Java UDF:**
 ```java
-package com.example;
-public class ToUpper extends EvalFunc<String> {
-  public String exec(Tuple input) {
-    return input.get(0).toString().toUpperCase();
-  }
+public class UpperCase extends EvalFunc<String> {
+    public String exec(Tuple input) throws IOException {
+        return input.get(0).toString().toUpperCase();
+    }
 }
 ```
 
-#### **Registering and Using in Pig:**
+## **2. Apache Hive (Data Warehouse System)**
 
-```pig
-REGISTER 'udfs.jar';
-DEFINE ToUpper com.example.ToUpper();
+### **2.1 Architecture**
+![Hive Architecture](https://hadoop.apache.org/hive/images/hive_architecture.jpg)
 
-output = FOREACH data GENERATE ToUpper(name);
+**Key Components:**
+1. **Driver:** Manages session and query execution
+2. **Compiler:** Converts HiveQL to execution plan
+3. **Metastore:** Stores schema metadata (usually in RDBMS)
+4. **Execution Engine:** Runs on MapReduce/Tez/Spark
+
+### **2.2 Installation & Services**
+**Installation Steps:**
+1. Download and extract Hive
+2. Configure `hive-site.xml`
+3. Set up Metastore (embedded/local/remote)
+4. Initialize schema: `schematool -initSchema -dbType derby`
+
+**Services:**
+- **CLI:** Command Line Interface
+- **HiveServer2:** Remote JDBC/ODBC access
+- **WebHCat:** REST API
+- **HCatalog:** Table management layer
+
+### **2.3 HiveQL vs SQL**
+| Feature | HiveQL | SQL |
+|---------|--------|-----|
+| Transactions | Limited support | Full ACID |
+| Indexes | Limited | Extensive |
+| Latency | High (batch-oriented) | Low |
+| Schema | Schema-on-read | Schema-on-write |
+
+### **2.4 Advanced Hive Features**
+**Partitioning:**
+```sql
+CREATE TABLE logs (msg STRING)
+PARTITIONED BY (dt STRING, country STRING);
 ```
 
----
+**Bucketing:**
+```sql
+CREATE TABLE users (id INT, name STRING)
+CLUSTERED BY (id) INTO 32 BUCKETS;
+```
 
-### **2.1 Hive Architecture (Simplified Flow)**
+**Window Functions:**
+```sql
+SELECT name, salary,
+       RANK() OVER (PARTITION BY dept ORDER BY salary DESC) as rank
+FROM employees;
+```
 
-* 🧠 **Metastore**: Think of it as the "brain" storing table schemas, locations, and metadata (usually in MySQL/PostgreSQL).
-* 🎯 **Driver**: Translates HiveQL (your SQL-like queries) into executable jobs (MapReduce/Tez/Spark).
-* 💻 **CLI / Beeline**: Interfaces for running queries, just like MySQL shell or pgAdmin.
+**MapReduce Scripts:**
+```sql
+-- Using TRANSFORM
+FROM (
+  MAP employee_data USING 'mapper.py'
+  AS name, salary
+) map_output
+REDUCE map_output USING 'reducer.py'
+AS name, avg_salary;
+```
+
+## **3. Apache HBase (NoSQL Database)**
+
+### **3.1 Core Concepts**
+**Data Model:**
+- **Table:** Collection of rows
+- **Row:** Unique row key + columns
+- **Column Family:** Group of columns (physical storage unit)
+- **Column Qualifier:** Unique within family
+- **Cell:** {row, column, version} → value
+- **Timestamp:** Version identifier
+
+**Example Structure:**
+```
+Row Key | Column Family:Qualifier | Value | Timestamp
+--------|-------------------------|-------|----------
+user1   | info:name               | John  | t1
+user1   | info:email              | j@x.co| t2
+```
+
+### **3.2 HBase vs RDBMS**
+| Feature | HBase | RDBMS |
+|---------|-------|-------|
+| Schema | Flexible | Rigid |
+| Scaling | Linear horizontal | Vertical |
+| Transactions | Single-row | Multi-row |
+| Joins | Not supported | Supported |
+| Indexes | Only primary | Multiple |
+
+### **3.3 Advanced Usage**
+**Schema Design Principles:**
+1. **Row Key Design:**
+   - Should distribute writes evenly
+   - Common patterns: Salting, hashing, sequential
+2. **Column Families:**
+   - Keep related data together
+   - Typically 1-3 per table
+3. **Versioning:**
+   - Configure number of versions to keep
+   - Automatic timestamp assignment
+
+**Secondary Indexing Options:**
+1. **Client-managed:** Maintain separate index table
+2. **Coprocessors:** Server-side indexing
+3. **External Solutions:** Phoenix, Solr
+
+### **3.4 ZooKeeper Integration**
+**Roles in HBase:**
+1. **Master Election:** Active/standby coordination
+2. **Region Server Tracking:** Server availability
+3. **Schema Changes:** Table modifications
+4. **Namespace Management:** Database-like grouping
+
+**Monitoring Example:**
+```bash
+# List ZooKeeper nodes
+echo "ls /hbase" | zkCli.sh
+```
+
+## **4. IBM Big Data Solutions**
+
+### **4.1 Big Data Strategy**
+**Four Pillars:**
+1. **Hadoop-based Analytics:** InfoSphere BigInsights
+2. **Stream Computing:** InfoSphere Streams
+3. **Data Warehousing:** Db2 Warehouse
+4. **System of Record:** Db2 and Informix
+
+### **4.2 InfoSphere BigInsights**
+**Components:**
+- **Big SQL:** SQL interface for Hadoop
+- **Big Sheets:** Excel-like analysis tool
+- **Text Analytics:** Unstructured data processing
+- **Machine Learning:** Predictive modeling
+
+**Architecture:**
+1. **Data Layer:** HDFS, HBase, Hive
+2. **Processing Layer:** MapReduce, Spark
+3. **Analytics Layer:** Big SQL, Big Sheets
+4. **Management Layer:** Security, monitoring
+
+### **4.3 Big SQL Features**
+**Key Capabilities:**
+- ANSI SQL compliant
+- Federated queries across Hadoop and RDBMS
+- Cost-based optimization
+- Columnar storage format
+
+**Example Query:**
+```sql
+-- Join Hadoop and Db2 data
+SELECT h.customer_id, d.customer_name, SUM(h.amount)
+FROM hadoop.sales h
+JOIN db2.customers d ON h.customer_id = d.customer_id
+GROUP BY h.customer_id, d.customer_name;
+```
+
+### **4.4 Big Sheets**
+**Features:**
+- Spreadsheet interface for Hadoop data
+- Visual data exploration
+- Pre-built analytic functions
+- Collaborative analysis
 
 **Workflow:**
-`Query → Driver → Compiler → Execution Engine (MR/Tez/Spark) → Results`
+1. Connect to Hadoop data source
+2. Create worksheet with data subset
+3. Apply transformations and formulas
+4. Visualize with charts and graphs
+5. Share results with team
 
----
+## **Practical Implementation Guide**
 
-### **2.2 Hive vs RDBMS (Battle Mode ⚔️)**
+### **Pig for ETL Pipeline**
+```pig
+-- Load weblogs
+logs = LOAD '/data/weblogs' USING PigStorage() AS (ip:chararray, timestamp:chararray, url:chararray);
 
-| **Feature**    | **Hive (Big Data)**             | **RDBMS (e.g., MySQL)**     |
-| -------------- | ------------------------------- | --------------------------- |
-| Transactions   | Limited (Hive 3+ supports ACID) | Full ACID support           |
-| Speed          | Slow (batch processing)         | Fast (row-based, real-time) |
-| Schema         | Schema-on-read                  | Schema-on-write             |
-| Storage        | On HDFS                         | On local disk               |
-| Query Language | HiveQL (SQL-like)               | SQL                         |
+-- Extract date
+dated = FOREACH logs GENERATE ip, 
+       SUBSTRING(timestamp, 0, 10) AS date,
+       url;
 
-**Summary**: Hive is not for OLTP. It's built for **big data analytics**, not fast real-time queries.
+-- Filter for specific domain
+filtered = FILTER dated BY url MATCHES '.*example\\.com.*';
 
----
+-- Group by IP and date
+grouped = GROUP filtered BY (ip, date);
 
-### **2.3 HiveQL (SQL for Hadoop)**
+-- Count visits per IP/date
+counts = FOREACH grouped GENERATE 
+         group.ip, 
+         group.date, 
+         COUNT(filtered) AS visits;
 
-#### **Create Table:**
+-- Store results
+STORE counts INTO '/output/visit_counts' USING PigStorage(',');
+```
 
+### **Hive for Data Analysis**
 ```sql
-CREATE TABLE users (
-  id INT,
-  name STRING,
-  age INT
-) 
-ROW FORMAT DELIMITED 
-FIELDS TERMINATED BY ',';
+-- Create partitioned table
+CREATE EXTERNAL TABLE sales (
+    product_id STRING,
+    amount DOUBLE,
+    currency STRING
+)
+PARTITIONED BY (sale_date STRING)
+STORED AS PARQUET
+LOCATION '/data/sales';
+
+-- Add partition
+ALTER TABLE sales ADD PARTITION (sale_date='2023-01-01');
+
+-- Analytical query
+SELECT 
+    product_id,
+    AVG(amount) AS avg_sale,
+    PERCENTILE_APPROX(amount, 0.5) AS median_sale
+FROM sales
+WHERE sale_date BETWEEN '2023-01-01' AND '2023-01-31'
+GROUP BY product_id
+HAVING COUNT(*) > 100
+ORDER BY avg_sale DESC;
 ```
 
-Means: Treat each line like a CSV row.
+### **HBase Java API Example**
+```java
+// Create configuration
+Configuration config = HBaseConfiguration.create();
+config.set("hbase.zookeeper.quorum", "zk1.example.com");
 
-#### **Load Data:**
+// Create connection
+Connection connection = ConnectionFactory.createConnection(config);
 
-```sql
-LOAD DATA INPATH '/data/users.csv' INTO TABLE users;
+// Get table reference
+Table table = connection.getTable(TableName.valueOf("users"));
+
+// Put operation
+Put put = new Put(Bytes.toBytes("user123"));
+put.addColumn(Bytes.toBytes("info"), 
+             Bytes.toBytes("email"),
+             Bytes.toBytes("user@example.com"));
+table.put(put);
+
+// Get operation
+Get get = new Get(Bytes.toBytes("user123"));
+Result result = table.get(get);
+byte[] email = result.getValue(Bytes.toBytes("info"),
+                          Bytes.toBytes("email"));
+
+// Close resources
+table.close();
+connection.close();
 ```
-
-Just brings data from HDFS into Hive's table format.
-
-#### **Query Data:**
-
-```sql
-SELECT name, age FROM users WHERE age > 25;
-```
-
-Standard SQL-style querying.
-
-#### **Joins Example:**
-
-```sql
-SELECT a.name, b.order_id 
-FROM users a 
-JOIN orders b ON a.id = b.user_id;
-```
-
-Supports inner, outer, left/right joins — just like SQL.
-
----
-
-### **2.4 Hive UDFs (User Defined Functions)**
-
-You can define your own logic if built-in functions don't cut it.
-
-#### **Python UDF Example:**
-
-`udf.py`
-
-```python
-def square(n):
-  return n * n
-```
-
-**Register & Use:**
-
-```sql
-ADD FILE /path/to/udf.py;
-CREATE TEMPORARY FUNCTION py_square AS 'udf.square';
-SELECT py_square(age) FROM users;
-```
-
-Works with Python using **HiveStreaming/PyHive**.
-
----
-
-### **3. Apache HBase – NoSQL on Hadoop**
-
-#### **3.1 Core Concepts**
-
-* 🧱 **Column-Oriented DB**: Unlike row-based SQL, HBase stores data by **column families**. Great for sparse, large datasets.
-
-* ⚡ **Real-time use**: Best for fast read/write, e.g., chat apps, IoT data streams.
-
-#### **HBase vs. RDBMS:**
-
-| Feature | HBase                       | RDBMS                     |
-| ------- | --------------------------- | ------------------------- |
-| Schema  | Flexible (add cols anytime) | Fixed (predefined schema) |
-| Scaling | Horizontal (scale-out)      | Vertical (scale-up)       |
-| Access  | No SQL – uses API/Shell     | SQL                       |
-| Joins   | ❌ Not supported             | ✅ Native joins            |
-
----
-
-### **3.2 HBase Shell Commands 🐚**
-
-```bash
-create 'users', 'personal', 'professional'   # Table with 2 column families
-put 'users', '1', 'personal:name', 'Alice'   # Add name to row key 1
-put 'users', '1', 'professional:job', 'Engineer' # Add job info
-scan 'users'                                 # Read all data
-```
-
-**Think of it like this:**
-
-* Row key = Primary key (e.g., user ID)
-* Column family = Category (e.g., personal)
-* Column qualifier = Field (e.g., name)
-
----
-
-### **3.3 Schema Design Tips 📐**
-
-* ✅ **Denormalize**: Store related info in same row (no foreign keys or joins).
-* ✅ **Good Row Keys**: Use hashed/timestamp-based keys to spread load.
-* ❌ **Don’t use sequential keys**: Leads to server **hotspotting**.
-
----
-
-### **4. ZooKeeper – The Cluster Manager 🦁**
-
-#### **4.1 Role in Hadoop Ecosystem:**
-
-* ⚙️ Keeps track of **which node is active**, dead, or elected.
-* 📍 **Lock service**: Ensures only one leader (e.g., NameNode).
-* 💬 **Coordination center**: Apps like HBase **use ZooKeeper** to track their region servers.
-
----
-
-### **5. IBM Big Data Tools**
-
-#### **5.1 IBM BigInsights**
-
-Think of it as **IBM’s customized Hadoop** distribution—adds tools to make life easier:
-
-* **BigSheets** 🧾: Analyze big data using spreadsheet-style UI. No coding, drag-n-drop magic. Great for business analysts.
-* **Big SQL** ⚡: SQL engine for querying Hadoop data. Supports **ANSI SQL** and is much faster than Hive due to optimization techniques.
-
----
-
-### **5.2 Big SQL vs. Hive – Quick Battle 🥊**
-
-| Feature          | Big SQL                       | Hive                   |
-| ---------------- | ----------------------------- | ---------------------- |
-| Speed            | Low latency, highly optimized | Batch-based, slower    |
-| Language Support | Full SQL-2016                 | HiveQL (SQL-like)      |
-| Integration      | Deep with IBM ecosystem       | Open-source & flexible |
-| Use Case         | Real-time analytics on Hadoop | Large-scale batch jobs |
-
----
-
-### **Exam Tips ☑️**
-
-* **Pig vs Hive**:
-  Pig = Script, step-by-step (procedural).
-  Hive = SQL, what-to-do (declarative).
-
-* **HBase Design**:
-
-  * Avoid joins, denormalize.
-  * Row keys must spread load evenly.
-
-* **ZooKeeper**:
-  Think of it as a **distributed traffic cop** – keeps services coordinated, locks, configs, and node status synced.
-
----
-
