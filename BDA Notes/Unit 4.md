@@ -1,318 +1,490 @@
-
-# 1. Hadoop Ecosystem & YARN — Detailed Notes for You
-
----
-
-### 1.1 Hadoop Ecosystem Components
-
-**Hadoop = More than just HDFS + MapReduce.**
-It’s a whole toolkit for Big Data stuff, each part with a specific job, like a squad of superheroes.
-
-| Tool          | What It Does                                        | Real-Life Example                                 |
-| ------------- | --------------------------------------------------- | ------------------------------------------------- |
-| **HBase**     | NoSQL database, fast reads/writes                   | WhatsApp storing millions of messages instantly   |
-| **Hive**      | SQL-like queries for analysts                       | Creating sales reports easily                     |
-| **Pig**       | Script language for ETL (cleaning & moving data)    | Cleaning messy log files before analysis          |
-| **Sqoop**     | Transfers data from traditional SQL DBs into Hadoop | Moving CRM customer data into Hadoop              |
-| **Flume**     | Streams live data into Hadoop                       | Tracking live website clicks & social media feeds |
-| **Oozie**     | Job scheduler, like cron for Hadoop                 | Running your daily batch jobs at night            |
-| **ZooKeeper** | Coordinates cluster, keeps it stable                | Making sure NameNode failover happens smoothly    |
-
-**Why it matters?**
-Each tool handles a different puzzle piece in Big Data. Hive = SQL comfort, Pig = ETL magic, Sqoop = bridge to old SQL systems, etc.
-
----
-
-### 1.2 What is YARN? (Yet Another Resource Negotiator)
-
-**Think of YARN as Hadoop’s brain for managing resources** — CPU, memory, and more — like a smart office manager distributing tasks perfectly.
-
-**YARN components:**
-
-* **ResourceManager (RM):** The HR guy. Decides who gets which resource across the whole cluster.
-* **NodeManager (NM):** Team leads. They manage resources on each individual worker machine.
-* **ApplicationMaster (AM):** Project managers. Each job (like MapReduce or Spark) has one, negotiating resources with RM.
-
-**How YARN works:**
-
-1. You (client) send a job (e.g., Spark job).
-2. RM assigns an AM to manage your job.
-3. AM asks RM for containers (CPU + RAM units).
-4. NM launches tasks inside those containers on nodes.
-
-**Metaphor:**
-YARN = Office manager
-
-* RM = HR assigning projects
-* NM = Team leads managing workers
-* AM = Project manager handling a single project
-
----
-
-### 1.3 Hadoop 2.0 New Features
-
-**Why Hadoop 2.0 is better?**
-
-| Feature                             | Problem in Hadoop 1                              | Hadoop 2 Solution & Example                                                                                |
-| ----------------------------------- | ------------------------------------------------ | ---------------------------------------------------------------------------------------------------------- |
-| **NameNode High Availability (HA)** | Single NameNode = SPOF (Single Point of Failure) | Now Active-Standby NameNodes with ZooKeeper failover. If active crashes, standby kicks in instantly.       |
-| **HDFS Federation**                 | Only one namespace limits scale                  | Multiple NameNodes manage different directories. E.g., NameNode1 → `/sales` data, NameNode2 → `/logs` data |
-| **MRv1 vs MRv2 (YARN)**             | MRv1 limited scalability & only MapReduce        | MRv2 supports 10K+ nodes & other frameworks like Spark, Tez                                                |
-
-**Quick example:**
-If your original Hadoop cluster was a small shop (one boss, one register), Hadoop 2.0 made it a supermarket with many counters and managers, so no bottlenecks or crashes kill the shop.
-
----
-
-### Bonus: Running MRv1 on YARN
-
-To run old MapReduce jobs on new YARN clusters:
-
-```bash
-mapred --config /etc/hadoop-conf yarn jar old-mr-job.jar
-```
-
----
-
-# 2. NoSQL Databases — Easy & Detailed Notes
-
----
-
-### 2.1 What is NoSQL?
-
-**NoSQL = Not just “No SQL,” but “Not Only SQL.”**
-These are databases designed for unstructured or semi-structured data, unlike traditional SQL DBs.
-
----
-
-### Why do we need NoSQL?
-
-* **Scale:** SQL can choke on millions of writes per second. NoSQL handles huge data streams easily.
-* **Flexibility:** No rigid tables or fixed schemas. You can store varied and evolving data formats without stress.
-
----
-
-### Types of NoSQL Databases & When to Use Them
-
-| Type          | Best Use Case                                          | Popular Examples |
-| ------------- | ------------------------------------------------------ | ---------------- |
-| **Document**  | Stores JSON-like data (complex, nested)                | MongoDB, CouchDB |
-| **Key-Value** | Simple, super-fast lookups                             | Redis, DynamoDB  |
-| **Columnar**  | Big data analytics (billions of rows)                  | Cassandra, HBase |
-| **Graph**     | Data with complex relationships (like social networks) | Neo4j            |
-
----
-
-### Quick real-life examples:
-
-* **Document:** Storing user profiles with varying info in MongoDB.
-* **Key-Value:** Redis caching session data for super quick access.
-* **Columnar:** Cassandra powering analytics for huge e-commerce logs.
-* **Graph:** Neo4j mapping friends & connections on Facebook.
-
----
-
-NoSQL = When you want speed, scale, and flexibility beyond rigid tables.
-
----
-
-
-# 3. MongoDB (Document NoSQL Database) — Detailed Notes
-
-
-### 3.1 MongoDB Basics
-
-* **Data Format:** Uses BSON (Binary JSON) — basically JSON but optimized for speed and size.
-
-* **Example Document:**
-
-```json
-{
-  "_id": 1,
-  "name": "Alice",
-  "age": 25,
-  "hobbies": ["coding", "hiking"]
-}
-```
-
-Think of this as a flexible JSON profile for Alice.
-
----
-
-### 3.2 CRUD Operations (Create, Read, Update, Delete)
-
-| Operation | Command Example                                     | What it does             |
-| --------- | --------------------------------------------------- | ------------------------ |
-| Insert    | `db.users.insert({name: "Bob", age: 30})`           | Add a new user Bob       |
-| Update    | `db.users.update({name: "Bob"}, {$set: {age: 31}})` | Change Bob’s age to 31   |
-| Delete    | `db.users.remove({name: "Bob"})`                    | Remove Bob from users    |
-| Query     | `db.users.find({age: {$gt: 25}})`                   | Find users older than 25 |
-
----
-
-### 3.3 Indexing in MongoDB
-
-* Purpose: Like an index in a book, it speeds up searches.
-* Example:
-
-```js
-db.users.createIndex({age: 1})  // 1 means ascending order
-```
-
-* Types of indexes:
-
-  * Single-field (on one key)
-  * Compound (on multiple keys)
-  * Text (for searching text)
-  * Geospatial (for location data)
-
----
-
-### 3.4 Capped Collections
-
-* Fixed-size collections — once full, old data gets overwritten automatically.
-* Use case: Perfect for logs or streaming data.
-* Example:
-
-```js
-db.createCollection("logs", {capped: true, size: 1000000})
-```
-
-This creates a "logs" collection capped at about 1MB.
-
----
-
-MongoDB is like your flexible, JSON-based friend who’s great with semi-structured data and fast queries.
-
----
-
-# 4. Apache Spark — Clear & Detailed Notes
-
----
-
-### 4.1 Installing Spark
-
-Run these commands in terminal:
-
-```bash
-wget https://archive.apache.org/dist/spark/spark-3.2.1/spark-3.2.1-bin-hadoop3.2.tgz
-tar -xvf spark-3.2.1-bin-hadoop3.2.tgz
-./bin/spark-shell
-```
-
-This downloads, extracts, and launches Spark’s interactive shell.
-
----
-
-### 4.2 Spark Concepts: Applications, Jobs, Stages & Tasks
-
-| Term            | Meaning                                      |
-| --------------- | -------------------------------------------- |
-| **Application** | A whole Spark program (like a script).       |
-| **Job**         | Triggered by an action (e.g., `count()`).    |
-| **Stage**       | A group of tasks, divided by shuffle points. |
-| **Task**        | Smallest work unit, runs on one CPU core.    |
+# **Ultra-Detailed Guide to Hadoop Ecosystem, NoSQL, Spark & Scala**
+
+## **1. Hadoop Ecosystem & YARN (Deep Dive)**
+
+### **1.1 Hadoop Ecosystem Components (Extended Definition)**
+
+The Hadoop ecosystem is a collection of tools that extend Hadoop's core capabilities (HDFS + MapReduce) to address various big data challenges:
+
+1. **HDFS (Hadoop Distributed File System)**
+   - Distributed storage system designed to run on commodity hardware
+   - Uses block storage (default 128MB blocks)
+   - Implements replication (default 3x) for fault tolerance
+   - Architecture: Single NameNode (manages metadata) + multiple DataNodes (store actual data)
+
+2. **YARN (Yet Another Resource Negotiator)**
+   - Cluster resource management system
+   - Separates resource management from data processing
+   - Components:
+     - ResourceManager (global resource allocator)
+     - NodeManager (per-machine agent)
+     - ApplicationMaster (per-application manager)
+
+3. **MapReduce**
+   - Original Hadoop processing framework
+   - Batch-oriented, disk-based processing model
+   - Two-phase execution:
+     - Map phase (processes input data)
+     - Reduce phase (aggregates results)
+
+4. **Hive**
+   - Data warehouse infrastructure
+   - Provides SQL-like interface (HiveQL)
+   - Translates queries to MapReduce/Tez/Spark jobs
+   - Includes metastore for schema management
+
+5. **Pig**
+   - High-level data flow language (Pig Latin)
+   - Suitable for ETL (Extract, Transform, Load) pipelines
+   - Compiles to MapReduce execution plans
+
+6. **HBase**
+   - Distributed, column-oriented NoSQL database
+   - Built on top of HDFS
+   - Provides real-time read/write access
+   - Uses ZooKeeper for coordination
+
+7. **ZooKeeper**
+   - Distributed coordination service
+   - Maintains configuration information
+   - Provides distributed synchronization
+   - Used for leader election, status tracking
+
+### **1.2 YARN Schedulers (In-Depth Comparison)**
+
+#### **Fair Scheduler**
+- Design Goal: Equal resource allocation across applications
+- Key Features:
+  - Dynamically balances resources
+  - Applications get minimum guaranteed shares
+  - Excess capacity distributed equally
+- Configuration:
+  - Uses allocation files (fair-scheduler.xml)
+  - Supports hierarchical queues
+- Use Case: Multi-tenant environments where fairness is critical
+
+#### **Capacity Scheduler**
+- Design Goal: Predictable resource allocation
+- Key Features:
+  - Dedicated queues with guaranteed capacities
+  - Elasticity (unused capacity can be allocated)
+  - Supports hierarchical queues
+- Configuration:
+  - Uses capacity-scheduler.xml
+  - Queue capacities specified as percentages
+- Use Case: Organizations with multiple departments/teams
+
+**Comparison Table:**
+
+| Feature               | Fair Scheduler              | Capacity Scheduler         |
+|-----------------------|-----------------------------|----------------------------|
+| Allocation Principle  | Equal share                 | Guaranteed minimums        |
+| Queue Organization    | Hierarchical                | Hierarchical               |
+| Elasticity            | Dynamic rebalancing         | Within queue constraints   |
+| Best For              | Ad-hoc workloads            | Production environments    |
+| Configuration         | Allocation files            | XML configuration          |
+
+### **1.3 Hadoop 2.0 New Features (Technical Details)**
+
+#### **NameNode High Availability**
+- Problem: Single NameNode = Single Point of Failure
+- Solution:
+  - Active/Standby NameNode configuration
+  - Uses:
+    - Shared storage (NFS/Quorum Journal Manager)
+    - ZooKeeper for failover coordination
+  - Failover process:
+    1. Health monitoring detects failure
+    2. ZooKeeper initiates failover
+    3. Standby becomes active (typically <1 minute)
+
+#### **HDFS Federation**
+- Problem: Single namespace limitation
+- Solution:
+  - Multiple independent NameNodes
+  - Each manages portion of namespace
+  - Benefits:
+    - Horizontal scalability
+    - Isolation between namespaces
+  - Block pools:
+    - Each namespace has dedicated block pool
+    - DataNodes store blocks from multiple pools
+
+#### **MRv2 (YARN) Architecture**
+- Fundamental changes from MRv1:
+  - Separates resource management (YARN) from programming model (MapReduce)
+  - Components:
+    - ResourceManager (global)
+    - ApplicationMaster (per-application)
+    - NodeManager (per-node)
+  - Benefits:
+    - Better cluster utilization
+    - Support for non-MapReduce frameworks
+
+#### **Running MRv1 in YARN**
+- Compatibility layer for legacy applications
+- Uses MR AM (MapReduce ApplicationMaster)
+- Translates MRv1 API calls to YARN requests
+- Configuration:
+  - Set mapreduce.framework.name=yarn
+  - Requires MRv1 libraries on cluster
+
+## **2. NoSQL Databases (Comprehensive Overview)**
+
+### **2.1 Introduction to NoSQL**
+- Definition: Non-relational databases designed for specific data models
+- Characteristics:
+  - Schema-less design
+  - Horizontal scalability
+  - Flexible data models
+  - BASE properties (Basically Available, Soft state, Eventually consistent)
+
+**CAP Theorem Implications:**
+- Consistency, Availability, Partition Tolerance - can only guarantee 2/3
+- NoSQL types by CAP focus:
+  - CP: HBase, MongoDB (with strong consistency)
+  - AP: Cassandra, CouchDB
+
+**Data Model Classification:**
+1. **Document Stores** (MongoDB, CouchDB)
+   - Store semi-structured documents (JSON/BSON)
+   - Nested data structures
+   - Dynamic schemas
+
+2. **Key-Value Stores** (Redis, DynamoDB)
+   - Simple data model (key → value)
+   - High performance
+   - Limited query capabilities
+
+3. **Column-Family Stores** (Cassandra, HBase)
+   - Sparse, distributed multi-dimensional maps
+   - Column-oriented storage
+   - Good for time-series data
+
+4. **Graph Databases** (Neo4j, JanusGraph)
+   - Nodes, edges, properties
+   - Efficient for relationship-heavy data
+   - Complex queries about connections
+
+**Use Case Analysis:**
+
+| Database Type   | Best For                          | Not Good For               |
+|-----------------|-----------------------------------|----------------------------|
+| Document        | Content management, catalogs      | Complex transactions       |
+| Key-Value       | Caching, session storage          | Complex queries            |
+| Column-Family   | Time-series, event logging        | ACID transactions          |
+| Graph           | Social networks, recommendations  | Tabular reporting          |
+
+## **3. MongoDB (Technical Deep Dive)**
+
+### **3.1 Core Concepts**
+- **Document**: Basic unit (JSON-like BSON format)
+- **Collection**: Group of documents (analogous to table)
+- **Database**: Set of collections
+- **BSON Types**:
+  - String, Integer, Boolean
+  - Date, Timestamp
+  - ObjectId (primary key)
+  - Binary data
+  - Array, Embedded document
+
+### **3.2 CRUD Operations (Detailed)**
+
+#### **Creating Documents**
+- `insertOne()`: Single document insertion
+- `insertMany()`: Batch insertion
+- Write concerns:
+  - w:1 (default)
+  - w:"majority"
+  - j:true (journaled)
 
 **Example:**
+```javascript
+db.products.insertOne({
+  _id: ObjectId("507f191e810c19729de860ea"),
+  name: "Laptop",
+  price: 999.99,
+  tags: ["electronics", "portable"],
+  stock: { warehouse: "A", qty: 50 }
+})
+```
+
+#### **Updating Documents**
+- Update operators:
+  - `$set`: Set field value
+  - `$unset`: Remove field
+  - `$inc`: Increment numeric value
+  - `$push/$addToSet`: Array operations
+
+**Example:**
+```javascript
+db.products.updateOne(
+  { _id: ObjectId("507f191e810c19729de860ea") },
+  { $inc: { "stock.qty": -1 } }
+)
+```
+
+#### **Deleting Documents**
+- `deleteOne()`: Remove single document
+- `deleteMany()`: Remove multiple
+- Bulk write operations
+
+#### **Querying (Advanced)**
+- Query operators:
+  - Comparison: `$eq`, `$gt`, `$in`
+  - Logical: `$and`, `$or`, `$not`
+  - Element: `$exists`, `$type`
+  - Array: `$all`, `$elemMatch`
+
+**Example:**
+```javascript
+db.products.find({
+  price: { $lt: 1000 },
+  tags: { $in: ["electronics"] },
+  "stock.qty": { $gt: 0 }
+})
+```
+
+### **3.3 Indexing (Performance-Critical)**
+
+**Index Types:**
+1. **Single Field**: `db.collection.createIndex({ field: 1 })`
+2. **Compound**: Multiple fields
+3. **Multikey**: Array fields
+4. **Text**: Full-text search
+5. **Geospatial**: Location data
+6. **Hashed**: Sharding key
+7. **TTL**: Auto-expiring documents
+
+**Index Properties:**
+- Unique constraint
+- Sparse (only index documents with field)
+- Partial (filtered indexes)
+
+**Query Optimization:**
+- Explain plans (`explain("executionStats")`)
+- Covered queries (projection + index)
+- Index intersection
+
+### **3.4 Capped Collections**
+- Fixed-size collections (circular buffers)
+- Characteristics:
+  - Insertion order preserved
+  - Automatic oldest document removal
+  - High-throughput writes
+- Use cases:
+  - Logging
+  - Cache systems
+  - Real-time analytics
+
+**Creation Example:**
+```javascript
+db.createCollection("logs", { capped: true, size: 1000000, max: 1000 })
+```
+
+## **4. Apache Spark (Architectural Details)**
+
+### **4.1 Installation & Deployment**
+**Cluster Modes:**
+1. **Local Mode**: Single JVM (development)
+2. **Standalone**: Spark's built-in cluster manager
+3. **YARN**: Hadoop integration
+4. **Mesos**: Alternative cluster manager
+5. **Kubernetes**: Containerized deployment
+
+**Installation Steps:**
+1. Download binaries
+2. Configure:
+   - `spark-env.sh` (environment variables)
+   - `spark-defaults.conf` (runtime properties)
+3. Deploy to cluster
+4. Verify with `spark-submit`
+
+### **4.2 Spark Application Anatomy**
+
+**Execution Hierarchy:**
+1. **Application**: User program (contains jobs)
+2. **Job**: Sequence of stages triggered by action
+3. **Stage**: Set of parallel tasks (pipeline of transformations)
+4. **Task**: Smallest unit of work (operates on RDD partition)
+
+**Example Workflow:**
+1. User submits application
+2. Driver program creates DAG (Directed Acyclic Graph)
+3. DAGScheduler divides into stages
+4. TaskScheduler launches tasks on executors
+5. Results returned to driver
+
+### **4.3 Resilient Distributed Datasets (RDDs)**
+
+**Characteristics:**
+- Immutable distributed collection
+- Partitioned across cluster
+- Can be rebuilt if lost (lineage)
+- Two types of operations:
+  - Transformations (lazy)
+  - Actions (eager)
+
+**RDD Operations:**
+- Transformations:
+  - `map()`, `filter()`, `flatMap()`
+  - `reduceByKey()`, `join()`
+  - `repartition()`, `coalesce()`
+- Actions:
+  - `count()`, `collect()`
+  - `reduce()`, `saveAsTextFile()`
+
+**Fault Tolerance:**
+- Lineage tracking
+- Checkpointing (persists RDD to storage)
+- Shuffle replication
+
+### **4.4 Spark on YARN**
+
+**Deployment Modes:**
+1. **Client Mode**:
+   - Driver runs on client machine
+   - Good for interactive sessions
+   - Client must remain active
+2. **Cluster Mode**:
+   - Driver runs in YARN container
+   - Better for production
+   - Client can disconnect
+
+**Configuration:**
+- Set `--master yarn`
+- Resource allocation:
+  - `spark.executor.memory`
+  - `spark.executor.cores`
+  - `spark.yarn.queue`
+
+**Performance Considerations:**
+- Container sizing
+- Dynamic allocation
+- Data locality
+
+## **5. Scala (Language Deep Dive)**
+
+### **5.1 Object-Oriented Features**
+
+**Classes:**
+```scala
+class Person(val name: String, var age: Int) {
+  // Constructor parameters become fields
+  def greet(): String = s"Hello, $name!"
+  
+  // Auxiliary constructor
+  def this(name: String) = this(name, 0)
+}
+```
+
+**Objects (Singletons):**
+```scala
+object Logger {
+  private var level = "INFO"
+  
+  def setLevel(newLevel: String): Unit = {
+    level = newLevel
+  }
+  
+  def log(message: String): Unit = {
+    println(s"[$level] $message")
+  }
+}
+```
+
+**Case Classes:**
+- Immutable by default
+- Auto-generated:
+  - equals/hashCode
+  - toString
+  - copy method
+  - companion object with apply
 
 ```scala
-val data = sc.textFile("hdfs://data.txt")
-val words = data.flatMap(_.split(" "))
-val counts = words.count()  // This triggers a Job
+case class Point(x: Int, y: Int)
 ```
 
-Here, reading file → splitting words → counting words = stages and tasks under the hood.
+### **5.2 Functional Programming Features**
 
----
-
-### 4.3 Resilient Distributed Datasets (RDDs)
-
-* **What?** Immutable, partitioned data spread across the cluster.
-* **Key Features:**
-
-  * **Lineage:** Tracks transformations so if something fails, it can recompute lost data from the start.
-  * **Lazy Evaluation:** Doesn’t run until an action like `count()` or `collect()` is called.
-
----
-
-### 4.4 Running Spark on YARN (Hadoop’s resource manager)
-
-* **Cluster Mode:** Spark runs fully on cluster nodes, no client needed after submit.
-
-```bash
-spark-submit --master yarn --deploy-mode cluster app.jar
-```
-
-* **Client Mode:** Driver runs on your machine, workers run on cluster.
-
-```bash
-spark-submit --master yarn --deploy-mode client app.jar
-```
-
----
-
-Spark is like your high-speed data engine, breaking big jobs into small tasks and running them in parallel. 
-
-**Scala** is a programming language that runs on the Java Virtual Machine (JVM). It combines **Object-Oriented Programming (OOP)** and **Functional Programming** in one language. Spark’s native language is Scala because it’s super fast on JVM and handles big data well.
-
-In short:
-
-* Think of Scala as Java + superpowers for functional style.
-* Spark is built on Scala, so knowing it helps you write efficient Spark apps.
-
----
-
-# 5. Scala (Spark’s Native Language)
-
-### 5.1 Intro to Scala
-
-* Runs on JVM, combines OOP + functional styles.
-* Why Scala for Spark? Native JVM support = faster than Python.
-
----
-
-### 5.2 Basic Syntax
-
-* Variables:
-
-  ```scala
-  val immutable = 10  // can't change
-  var mutable = 20    // can change
-  ```
-* Functions:
-
-  ```scala
-  def square(x: Int): Int = x * x
-  ```
-* Control flow:
-
-  ```scala
-  if (x > 10) println("Big") else println("Small")
-  ```
-
----
-
-### 5.3 Classes & Objects
-
+**Functions:**
 ```scala
-class Person(name: String, age: Int) {
-  def greet(): Unit = println(s"Hello, $name!")
+// Anonymous function
+val square = (x: Int) => x * x
+
+// Higher-order function
+def operate(f: (Int, Int) => Int, a: Int, b: Int) = f(a, b)
+```
+
+**Closures:**
+```scala
+def multiplier(factor: Int) = (x: Int) => x * factor
+val timesTwo = multiplier(2)
+timesTwo(5) // Returns 10
+```
+
+**Pattern Matching:**
+```scala
+def matchTest(x: Any): String = x match {
+  case 1 => "one"
+  case "two" => 2
+  case _: Int => "other integer"
+  case _ => "unknown"
+}
+```
+
+### **5.3 Type System**
+
+**Basic Types:**
+- `Byte`, `Short`, `Int`, `Long`
+- `Float`, `Double`
+- `Char`, `String`
+- `Boolean`
+- `Unit` (like void)
+
+**Type Inference:**
+```scala
+val x = 1 // Inferred as Int
+val y = "hello" // Inferred as String
+```
+
+**Type Hierarchy:**
+- `Any` (supertype of all types)
+  - `AnyVal` (value types)
+  - `AnyRef` (reference types)
+- `Nothing` (subtype of all types)
+- `Null` (subtype of all reference types)
+
+### **5.4 Control Structures**
+
+**Conditionals:**
+```scala
+val result = if (x > 0) "positive" else "negative"
+```
+
+**Loops:**
+```scala
+// While loop
+while (condition) {
+  // code
 }
 
-val alice = new Person("Alice", 25)
-alice.greet()
+// For comprehension
+for {
+  i <- 1 to 5
+  j <- 1 until i
+  if i % 2 == 0
+} yield (i, j)
 ```
 
----
-
-# Exam Cheat Sheet — Rapid Fire
-
-| Question         | Answer                                                                                           |
-| ---------------- | ------------------------------------------------------------------------------------------------ |
-| YARN vs MRv1     | YARN: manages resources separately, supports Spark, Tez.<br>MRv1: only MapReduce, less scalable. |
-| MongoDB Indexing | Speeds queries.<br>Types: single-field, compound, text.                                          |
-| Spark RDDs       | Immutable, fault-tolerant (lineage).<br>Lazy evaluation (run on action).                         |
-| Scala Basics     | `val` immutable, `var` mutable.<br>Function example: `def square(x: Int): Int = x * x`.          |
-
----
-
+**Exception Handling:**
+```scala
+try {
+  riskyOperation()
+} catch {
+  case e: IOException => println("IO error")
+  case _: Exception => println("General error")
+} finally {
+  cleanup()
+}
+```
