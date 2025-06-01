@@ -45,12 +45,38 @@ Agar tumhare paas 10 computers ka cluster hai, toh HDFS is 1 TB file ko **blocks
 
 ## 🔷 **Data Format in Hadoop:**
 
-Hadoop mostly use karta hai:
+1. **Text File**:
+   CSV format mein — `sales.csv`
 
-* **Text files**
-* **Sequence files**
-* **Avro, Parquet** (for structured data)
-* Binary formats (efficient data processing ke liye)
+   ```
+   date,product,price
+   2025-06-01,Pen,10
+   2025-06-01,Book,50
+   ```
+
+2. **Sequence File**:
+   Key-Value pairs — `user_clicks.seq`
+
+   ```
+   Key: user_id_101  | Value: clicked_homepage
+   Key: user_id_102  | Value: clicked_product
+   ```
+
+3. **Avro File**:
+   Structured + schema — `employee.avro`
+
+   ```json
+   { "name": "Ravi", "id": 101, "salary": 50000 }
+   ```
+
+4. **Parquet File**:
+   Columnar storage — `transactions.parquet`
+   Columns: `user_id`, `item_id`, `amount`, `timestamp`
+   Efficiently queried in Spark/Hive.
+
+5. **Binary Format**:
+   Images, audio, models — `image_data.bin`
+   Used in ML pipelines.
 
 ---
 
