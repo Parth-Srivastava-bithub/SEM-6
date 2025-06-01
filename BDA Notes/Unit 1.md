@@ -132,9 +132,13 @@ A **standard Big Data pipeline** includes:
 ### ❗Why Important?
 
 • Sensitive data jaise customer info protect hoti hai
+
 • Law follow karne se penalty nahi lagti
+
 • Customer ka trust banta hai
+
 • Risk aur loss kam hota hai
+
 • System efficiently kaam karta hai
 
 ---
@@ -142,9 +146,13 @@ A **standard Big Data pipeline** includes:
 ### 😟 Challenges:
 
 • Data volume zyada hota hai, attack ka chance bhi zyada
+
 • Naye threats roz nikalte hain, up-to-date rehna padta hai
+
 • Data ki quality aur accuracy maintain karni hoti hai
+
 • Har team me same governance apply karna mushkil
+
 • Secure bhi rakhna hai aur access bhi dena hai (authorized users ko)
 
 ---
