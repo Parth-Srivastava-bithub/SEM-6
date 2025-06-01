@@ -116,10 +116,15 @@ A **standard Big Data pipeline** includes:
 ### 🔐 Key Points:
 
 • **Data Protection** – Data ko chori ya misuse se bachana
+
 • **Compliance** – Laws aur company ke rules ka dhyan rakhna
+
 • **Security Tools** – Encryption, access control, monitoring use karna
+
 • **Risk Management** – Threats pehle se pehchaan ke unka solution nikalna
+
 • **Governance** – Data ki quality, rules, aur control maintain rakhna
+
 • **Security Analytics** – ML/AI se threats detect karna
 
 ---
