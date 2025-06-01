@@ -65,7 +65,6 @@ A **standard Big Data pipeline** includes:
 4. **Analysis** (ML models, SQL queries)  
 5. **Visualization** (Dashboards)  
 
-![Big Data Architecture](https://www.talend.com/resources/wp-content/uploads/2021/03/big-data-architecture-diagram.jpg)  
 
 ---
 
@@ -111,9 +110,35 @@ A **standard Big Data pipeline** includes:
 
 ## **9. Big Data Security & Compliance**
 ### **9.1 Key Challenges**
-- **Data Privacy** (GDPR, CCPA compliance)  
-- **Access Control** (Role-based permissions in Hadoop)  
-- **Encryption** (TLS for data in transit, AES for storage)  
+Big Data Security and Compliance refers to the measures and practices implemented to protect large volumes of data, ensuring its confidentiality, integrity, and availability while adhering to relevant regulations and standards. This involves protecting data from unauthorized access, cyberattacks, and data breaches.   
+Key Aspects of Big Data Security and Compliance: 
+
+• Data Protection: Safeguarding data from unauthorized access, theft, or misuse.  
+• Compliance: Adhering to data protection laws, industry standards, and internal policies.  
+• Security Measures: Implementing various security controls like encryption, access control, authentication, and monitoring.  
+• Risk Management: Identifying and mitigating potential security risks associated with big data.  
+• Data Governance: Establishing formal governance structures to ensure data quality, compliance, and security.  
+• Data Security Analytics: Using advanced analytical techniques, like machine learning, to detect and respond to threats.  
+
+Why Big Data Security and Compliance is Important: 
+
+• Protecting Sensitive Information: Safeguarding sensitive data, such as customer details, intellectual property, and financial information.  
+• Compliance with Regulations: Ensuring adherence to data protection laws and regulations, such as GDPR, CCPA, and HIPAA.  
+• Maintaining Trust: Building and maintaining trust with customers, stakeholders, and business partners.  
+• Mitigating Risks: Reducing the risk of data breaches, financial losses, reputational damage, and legal liabilities.  
+• Enhancing Operational Efficiency: Streamlining operations and reducing the cost of data breaches and remediation.  
+
+Examples of Big Data Security and Compliance Challenges: 
+
+• Vulnerability of Large Datasets: The sheer volume and complexity of big data make it a prime target for cyberattacks.  
+• Keeping Pace with Emerging Threats: Cyber threats are constantly evolving, requiring organizations to adapt their security measures.  
+• Ensuring Data Quality and Integrity: Maintaining the accuracy and reliability of big data is crucial for effective decision-making.  
+• Implementing Effective Data Governance: Establishing and enforcing data governance policies across the organization.  
+• Balancing Security and Data Accessibility: Ensuring data is secure while also remaining accessible to authorized users.  
+
+
+
+
 
 **Example:**  
 - **HSBC** uses **Kerberos + Ranger** for Hadoop security.  
