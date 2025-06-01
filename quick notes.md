@@ -21,3 +21,21 @@ Both NameNodes **share metadata** using:
 
 **🔁 Result:** Even if one NameNode fails, the cluster **remains available and functional**
 
+## 🧩 HDFS Federation
+
+**Problem:**  
+HDFS originally had a **single NameNode** managing **one namespace**.  
+As data volume grew, this caused **performance bottlenecks** and **limited scalability**.
+
+### ✅ Solution:
+- Use **multiple independent NameNodes**
+- Each NameNode manages its **own namespace**
+- All NameNodes share the same set of **DataNodes**
+
+### 🧠 Block Pools:
+- Each namespace has its **own block pool**
+- **DataNodes** store blocks from **multiple block pools**
+
+### 🎯 Benefits:
+- 🔄 **Horizontal scalability** → Add more namespaces as needed  
+- 🔐 **Isolation** → Keeps data of different apps/teams separated
