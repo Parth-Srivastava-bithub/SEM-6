@@ -260,10 +260,6 @@ Ye real-world mein use hone wala model hai. OSI ka practical version samjho:
 
 ## 🛠️ 6. **Network Devices and Components**
 
-Bilkul bhai 😎 Hinglish version ready hai:
-
----
-
 ### 🔹 1. **Hub**
 
 * Sabse simple network device hota hai.
