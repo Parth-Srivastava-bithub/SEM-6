@@ -230,4 +230,246 @@ Iska dimaag simple hai: **"Bas mujhe bata tu kitni door hai, mai dekh leta hoon 
 * **Token Bucket**: Allows bursty traffic up to certain limit using tokens.
 
 ---
+---
 
+
+
+
+### 🌐 **Network Layer**
+
+**Kaam kya?** Packet ko ek network se doosre network tak le jaana.
+
+#### 📍 **Routing**
+
+Best raasta decide karta hai jisse packet destination tak jaaye.
+
+#### 🧠 **Logical Addressing**
+
+IP address assign karta hai — har device ka unique pehchaan.
+
+#### 🔗 **Internetworking**
+
+Alag-alag networks ko jodta hai ek bade Internet me.
+
+#### ✂️ **Fragmentation**
+
+Agar packet bada ho, to usko chhote tukdon me tod deta hai – fir receiver pe jod deta hai.
+
+---
+
+### 🧍‍♂️ **Point-to-Point Network**
+
+Sirf do devices directly connected — no switch, no router.
+
+---
+
+### ⚙️ **Basic Internetworking**
+
+#### 🌍 **IP (Internet Protocol)**
+
+Jo rules banata hai ki packet kaise travel kare network ke across.
+
+##### 🎯 **IP Address Classes**
+
+Divide karte hain networks ko size ke basis pe.
+
+* **Class A** – Big companies (1.0.0.0 – 126.x.x.x)
+* **Class B** – Medium orgs (128.0.0.0 – 191.x.x.x)
+* **Class C** – Small businesses (192.0.0.0 – 223.x.x.x)
+* **Class D** – Multicast (224.x.x.x – 239.x.x.x)
+* **Class E** – Research & Reserved (240.x.x.x – 255.x.x.x)
+
+---
+
+### ✂️ **CIDR (Classless Inter-Domain Routing)**
+
+Class ke bina IP dena – jaise `/24` ka matlab 256 IPs. Zyada flexible hai.
+
+---
+
+### 📣 **ARP (Address Resolution Protocol)**
+
+IP se MAC address nikalta hai – jaise GPS se exact house location lena.
+
+---
+
+### 🧙‍♂️ **DHCP (Dynamic Host Config Protocol)**
+
+Automatically har device ko IP, Gateway, DNS assign karta hai – bina manual setting.
+
+---
+
+### 📬 **ICMP (Internet Control Message Protocol)**
+
+Error ya status batane ke liye use hota hai – jaise ping ka reply.
+
+---
+
+### 🔁 **RARP (Reverse ARP)**
+
+MAC address se IP nikalta hai – ab rarely use hota hai.
+
+---
+
+### 🧩 **Subnetting**
+
+Bade network ko chhoti logical parts me todna – management easy hota hai.
+
+#### 🛠️ **Fixed Length**
+
+Sab subnet same size ke hote hain.
+
+#### 🧠 **Variable Length**
+
+Alag-alag size ke subnet – zyada efficient.
+
+---
+
+### 📦 **IPv4**
+
+* **Version** – Header ka pehla field batata hai ki IPv4 use ho raha hai.
+* **Header** – Meta info store karta hai jaise source, destination, length, checksum.
+* **Services** – QoS define karta hai; kis packet ko priority milegi.
+* **Total Length** – Packet ka total size in bytes batata hai.
+* **Identification** – Fragmented packets ko ek group me pehchaanne ke liye.
+* **Flags** – Packet me fragmentation allowed hai ya nahi, yeh batata hai.
+* **Header Checksum** – Header sahi hai ya corrupted, yeh verify karta hai.
+* **Source Address** – Packet kahan se aaya, uska IP address.
+* **Destination Address** – Packet ko kahan jaana hai, uska IP address.
+
+---
+
+### 🌐 **IPv6**
+
+* **Version** – 6 likha hota hai to bata chal jaata hai IPv6 hai.
+* **Traffic Class** – Packet ki priority aur QoS control karta hai.
+* **Flow Label** – Same stream ke packets ko identify karta hai (streaming, video etc).
+* **Payload Length** – Data part ka size batata hai.
+* **Next Header** – Next protocol (TCP, UDP, etc.) ka pointer.
+* **Hop Limit** – Max routers tak jaa sakta hai packet; TTL ka upgraded version.
+
+---
+
+### 🔁 **IPv4 vs IPv6**
+
+* IPv4 = 32-bit address (4.3 billion), IPv6 = 128-bit (infinite practically).
+* IPv6 me built-in security, fast routing & no need for NAT.
+
+---
+
+### 📨 **ICMP**
+
+* **Kya hai?** Control protocol for reporting errors (e.g., ping, unreachable).
+* **Uses** – Diagnostics, packet loss, unreachable errors dikhana.
+* **Error Reporting** – Notify karta hai agar packet deliver nahi ho paya.
+* **Query Management** – Info requests ka jawab deta hai (like ping echo/reply).
+
+---
+
+### 🛣️ **Routing**
+
+* **Static Routing** – Manually set routes; stable but not adaptive.
+* **Dynamic Routing** – Routers khud se best path discover karte hain (like GPS).
+
+---
+
+### 📦 **Forwarding**
+
+* **Next Hop** – Agla router jisko packet bhejna hai.
+* **Network** – Destination network jiska route table me entry hai.
+* **Default** – Jab koi match na mile, to ek default route follow hota hai.
+
+---
+
+### 🚚 **Delivery**
+
+* **Direct** – Sender & receiver same network me hain, router nahi chahiye.
+* **Indirect** – Beech me ek ya zyada routers se packet jaata hai.
+
+---
+
+### 💡 **The Optimality Principle**
+
+* Best route wo hota hai jiska **cost** (delay, hops, etc.) minimum ho.
+* Har routing algorithm isi principle pe based hota hai.
+
+---
+
+### 📍 **Shortest Path Algorithm (Dijkstra)**
+
+* Source se sab destinations tak ka shortest path nikaalta hai.
+* Har node ka cost calculate karke minimum cost wale path pe bhejta hai.
+
+---
+
+### 🌊 **Flooding**
+
+* Har packet ko har outgoing link pe bhejta hai (except incoming se).
+* Redundant & heavy, but guarantees delivery.
+
+---
+
+### 📏 **Distance Vector Routing**
+
+* Har router neighbours ko bolta hai: "Mujhe X tak itna lagta hai."
+* Based on *Bellman-Ford algorithm*, but slow updates & loops possible.
+
+---
+
+### 🗺️ **Link State Routing**
+
+* Har router full map banata hai aur sabko bhejta hai.
+* Khud Dijkstra laga ke best path calculate karta hai.
+
+---
+
+### 📡 **Multicast Routing**
+
+* Ek hi data ko selected group tak bhejna – sabko nahi.
+* Efficient for conferencing, live stream, etc.
+
+---
+
+### 📢 **Broadcast Routing**
+
+* Data saare network me bhej diya jaata hai – sab devices ko.
+* Used in DHCP, ARP, etc.
+
+---
+
+### 🔥 **Congestion**
+
+* Jab network me zyada traffic aa jaye to slow, drop hone lagta hai.
+* Control karna important hai to avoid overload.
+
+---
+
+### 🛠 **Congestion Control**
+
+#### 🔓 **Open Loop**
+
+* **Retransmission** – Lost packets ko firse bhejna.
+* **Window** – Sliding window adjust karke traffic control karte hain.
+
+#### 🔐 **Closed Loop**
+
+* **Back Pressure** – Downstream router upstream ko slow hone ko bolta hai.
+* **Choke Packet** – Special warning packet bheja jaata hai sender ko slow karne ke liye.
+
+---
+
+### 🧪 **QoS (Quality of Service)**
+
+* **Reliability** – Packet loss kam ho.
+* **Delay** – Timely delivery ho.
+* **Jitter** – Variation in delay kam ho.
+* **Bandwidth** – Enough speed ho required data ke liye.
+
+---
+
+### 🪣 **Congestion Algorithms**
+
+* **Leaky Bucket** – Data fixed rate se nikalta hai – overflow drop ho jaata hai.
+* **Token Bucket** – Tokens collect karo, fir data bhejo – more flexible than leaky.
+
+---
