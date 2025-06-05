@@ -84,13 +84,38 @@
 
 ### **Routing**
 
-* **Static Routing**: Manually configured routes.
-* **Dynamic Routing**: Routers automatically discover and update paths.
-* **Forwarding**: Sending packet to next hop toward destination.
+### 🛣 **Static Routing**
 
-  * **Next Hop**: Immediate router to forward packet.
-  * **Network**: Destination network in routing table.
-  * **Default**: Used when no specific route matches.
+Tu khud route set karta hai – *“Jaipur jaana hai? Is road se jao!”*
+Manual hai, fixed hai. Change hua to tu khud update karega.
+
+### 🤖 **Dynamic Routing**
+
+Router bolta hai – *“Main khud best raasta dhoond lunga”*
+Jaise GPS – roads badle to auto update ho jaata hai.
+
+---
+
+### 📦 **Forwarding**
+
+Packet aaya? Router bolta hai – *“Isse agle wale ko bhejta hoon”*
+Just delivery ka kaam – *Next Hop* ko forward karta hai.
+
+### 🔁 **Next Hop**
+
+Agla router jahan packet bhejna hai.
+Soch, Domino’s rider ek shop se nikalta hai, next delivery point = next hop.
+
+### 🌐 **Network**
+
+Destination jahan packet jaana hai – routing table me likha hota hai:
+*“192.168.1.0 ke packets is raste se bhejo.”*
+
+### 🚪 **Default**
+
+Agar kisi network ka route pata nahi, to *“sab unknown packets yahan bhej do”*
+Jaise: *“Sab unknown logon ko gatekeeper ke paas bhej do.”*
+
 
 ---
 
