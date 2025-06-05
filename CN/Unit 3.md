@@ -1,55 +1,55 @@
-## 🔹 **Network Layer (OSI Model ka 3rd layer)**
+## 🔹 **Network Layer (3rd Layer of the OSI Model)**
 
-### 📌 Kya karta hai?
+### 📌 What does it do?
 
 # **Network Layer**
 
-Network layer ka kaam hota hai data ko ek device se doosri device tak bhejna, chahe wo same network mein ho ya alag-alag networks mein. Ye layer routing, addressing, internetworking aur data fragmentation handle karti hai. Routing ka matlab hota hai best path chunna data bhejne ke liye. Logical addressing se har device ko unique pehchaan milti hai, jaise IP address. Fragmentation tab hoti hai jab data packet bohot bada ho aur use chhote tukdon mein todna padta hai.
+The Network Layer's job is to send data from one device to another, whether they are on the same network or different networks. This layer handles routing, addressing, internetworking, and data fragmentation. Routing means choosing the best path to send data. Logical addressing gives each device a unique identifier, such as an IP address. Fragmentation occurs when a data packet is too large and needs to be broken into smaller pieces.
 
 ---
 
 ## 1. **Routing**
 
-Routing process hota hai jisme network devices (routers) decide karte hain ki data packets ko kaunse raaste se bhejna chahiye taaki wo sabse jaldi destination tak pahunch jayein. Ye process dynamic ya static ho sakta hai, jisme routing tables aur algorithms ka use hota hai. Routing ensures network traffic efficient rahe aur congestion na ho. Ye data delivery ko optimize karta hai. Network topology ke hisaab se routing path tayar hota hai.
+Routing is the process where network devices (routers) decide which path data packets should take to reach their destination quickly. This process can be dynamic or static, using routing tables and algorithms. Routing ensures network traffic is efficient and avoids congestion. It optimizes data delivery. The routing path is determined based on network topology.
 
-**Example:**
-Maan lijiye Delhi se Mumbai jaana hai, aapko shortest aur fastest raasta dhoondhna hai, toh GPS routing karta hai. Network mein router packets ko A → B → C ke through bhejta hai. Agar ek route bandh ho jaye toh router alternate route dhoondta hai.
+**Example:**  
+Imagine traveling from Delhi to Mumbai—you need to find the shortest and fastest route. GPS performs routing. In a network, a router sends packets via A → B → C. If one route fails, the router finds an alternate path.
 
 ---
 
 ## 2. **Logical Addressing**
 
-Logical addressing ka matlab hai har device ko ek unique address assign karna jo network ke andar usse pehchane. Ye address hardware address (MAC) se alag hota hai aur IP address ke roop mein hota hai. Logical addresses devices ke beech communication ko possible banate hain, chahe wo network ke kisi bhi kone mein ho. Ye address hierarchical structure follow karta hai jaise network part aur host part. Ye addressing network layer ke liye zaroori hoti hai.
+Logical addressing means assigning a unique address to each device for identification within the network. This address is different from a hardware (MAC) address and is in the form of an IP address. Logical addresses enable communication between devices, regardless of their location in the network. These addresses follow a hierarchical structure, like network and host parts. Addressing is essential for the Network Layer.
 
-**Example:**
-Aapke ghar ka ek unique address hota hai, waise hi computer ka IP address hota hai jaise 192.168.1.5. Jab aap website visit karte hain, toh aapka device apna logical address bhejta hai. Ye address internet routers ko batata hai ki packet kahaan bhejna hai.
+**Example:**  
+Just as your home has a unique address, a computer has an IP address like 192.168.1.5. When you visit a website, your device sends its logical address, telling internet routers where to send the packet.
 
 ---
 
 ## 3. **Internetworking**
 
-Internetworking ka matlab hai alag-alag networks ko jodna taaki wo ek dusre se baat kar saken. Ye internet ka basic concept hai jisme kai networks milkar ek bada network banate hain. Internetworking ke liye routers aur gateways ka use hota hai jo different protocols ko connect karte hain. Ye ensure karta hai ki data packets ek network se doosre network mein smoothly travel kar saken. Network layer internetworking ke liye IP protocol ka use karta hai.
+Internetworking means connecting different networks so they can communicate. This is the basic concept of the internet, where multiple networks combine to form a larger one. Internetworking uses routers and gateways to connect different protocols. It ensures data packets travel smoothly from one network to another. The Network Layer uses the IP protocol for internetworking.
 
-**Example:**
-Aapke mobile ka Wi-Fi network aur internet service provider ka network connected hain. Jab aap email bhejte hain, toh wo aapke network se internet ke network tak travel karta hai. Internetworking ke bina aap ek network se doosre network ke devices se connect nahi kar sakte.
+**Example:**  
+Your mobile’s Wi-Fi network and your internet service provider’s network are connected. When you send an email, it travels from your network to the internet. Without internetworking, devices on different networks couldn’t connect.
 
 ---
 
 ## 4. **Fragmentation**
 
-Fragmentation tab hoti hai jab data packet bohot bada hota hai aur network device usse accept nahi karta. Data ko chhote tukdon mein tod kar bhejna hota hai jise fragments kehte hain. Fir receiver fragments ko assemble karke original data banata hai. Ye process data loss aur errors ko kam karta hai. Fragmentation network efficiency ko maintain karta hai aur protocols jaise IP mein use hota hai.
+Fragmentation happens when a data packet is too large for a network device to accept. The data is broken into smaller pieces called fragments, which the receiver reassembles into the original data. This process reduces data loss and errors. Fragmentation maintains network efficiency and is used in protocols like IP.
 
-**Example:**
-Agar aap ek bada video file bhejna chahte hain jo ek packet mein nahi ja sakta, toh wo chhote packets mein tod diya jayega. Har chhota packet alag se bheja jayega. Receiver sab packets milane ke baad video ko dobara banata hai.
+**Example:**  
+If you send a large video file that can’t fit in one packet, it’s split into smaller packets. Each packet is sent separately, and the receiver combines them to recreate the video.
 
 ---
 
-## 5. **Point to Point Network**
+## 5. **Point-to-Point Network**
 
-Point to point network do devices ke beech direct connection hota hai, jisme beech mein koi third device nahi hota. Ye simple aur fast communication provide karta hai. Is tarah ka network mainly leased lines, telephone calls, ya serial connections mein hota hai. Isme data transfer reliable hota hai kyunki data ek fixed line se jaata hai. Point to point networks local ya wide area dono ho sakte hain.
+A point-to-point network is a direct connection between two devices without any intermediate devices. It provides simple and fast communication. This type of network is used in leased lines, telephone calls, or serial connections. Data transfer is reliable because it travels over a fixed line. Point-to-point networks can be local or wide area.
 
-**Example:**
-Aapka ghar aur office ke beech ek direct leased line connection. Do computers ke beech USB cable se connection. Telephone call bhi ek point to point network ka example hai.
+**Example:**  
+A direct leased line connection between your home and office. A USB cable connecting two computers. A telephone call is also a point-to-point network.
 
 ---
 
@@ -59,183 +59,181 @@ Aapka ghar aur office ke beech ek direct leased line connection. Do computers ke
 
 ## 1. **IP (Internet Protocol)**
 
-IP protocol network layer ka main protocol hai jo data packets ko source se destination tak bhejne ke liye addressing aur routing karta hai. IP addresses logical addressing ka part hain aur har device ko unique address dete hain. IP version 4 (IPv4) aur IPv6 dono common hain. IP packets ko route karne ke liye best path find karta hai. IP connectionless protocol hai, matlab packets independently travel karte hain.
+The IP protocol is the main Network Layer protocol that handles addressing and routing to send data packets from source to destination. IP addresses are part of logical addressing, giving each device a unique identifier. IPv4 and IPv6 are common versions. IP finds the best path to route packets. IP is a connectionless protocol, meaning packets travel independently.
 
 ---
 
 ### IP Address Classes
 
-IP addresses ko different classes mein divide kiya gaya hai jo network size aur use ke hisaab se alag hain:
+IP addresses are divided into classes based on network size and usage:
 
-* **Class A:** Large networks ke liye (1.0.0.0 to 126.255.255.255), example: 10.0.0.1
-* **Class B:** Medium size networks (128.0.0.0 to 191.255.255.255), example: 172.16.0.1
-* **Class C:** Small networks (192.0.0.0 to 223.255.255.255), example: 192.168.1.1
-* **Class D:** Multicast ke liye (224.0.0.0 to 239.255.255.255), example: 224.0.0.1
-* **Class E:** Reserved future use (240.0.0.0 to 255.255.255.255)
+* **Class A:** For large networks (1.0.0.0 to 126.255.255.255), e.g., 10.0.0.1  
+* **Class B:** Medium networks (128.0.0.0 to 191.255.255.255), e.g., 172.16.0.1  
+* **Class C:** Small networks (192.0.0.0 to 223.255.255.255), e.g., 192.168.1.1  
+* **Class D:** For multicast (224.0.0.0 to 239.255.255.255), e.g., 224.0.0.1  
+* **Class E:** Reserved for future use (240.0.0.0 to 255.255.255.255)  
 
-**Example:**
-Agar company ka network bada hai, toh wo Class A ka IP address lega. School ke chhote network mein Class C address use hota hai. Multicast TV channel broadcast karne ke liye Class D address use hota hai.
+**Example:**  
+A large company uses a Class A IP address. A small school network uses Class C. Multicast TV broadcasts use Class D.
 
 ---
 
 ## 2. **CIDR (Classless Inter-Domain Routing)**
 
-CIDR ek flexible IP addressing scheme hai jo IP addresses ko efficiently allocate karta hai, bina fixed class ke. Isme IP addresses ko prefixes ke form mein likha jaata hai, jaise 192.168.0.0/24. CIDR se address space better utilize hota hai aur routing tables chhoti hoti hain. Ye traditional class-based addressing ki limitations ko door karta hai.
+CIDR is a flexible IP addressing scheme that allocates IP addresses efficiently without fixed classes. IP addresses are written with prefixes, like 192.168.0.0/24. CIDR optimizes address space and reduces routing table size, overcoming limitations of class-based addressing.
 
-**Example:**
-192.168.1.0/28 ka matlab hai 16 addresses ek group mein. CIDR se ek company apne network ko chhote-chhote subnet mein divide kar sakti hai. Isse IP addresses ki bachat hoti hai.
+**Example:**  
+192.168.1.0/28 means 16 addresses in a group. A company can divide its network into smaller subnets, saving IP addresses.
 
 ---
 
 ## 3. **ARP (Address Resolution Protocol)**
 
-ARP ek protocol hai jo logical IP address ko physical MAC address mein convert karta hai taaki data local network mein bheja ja sake. Jab device ko kisi IP address par packet bhejna hota hai, toh wo ARP request bhejta hai aur MAC address leta hai. Ye local area network mein communication ke liye zaroori hai.
+ARP converts logical IP addresses to physical MAC addresses for local network communication. When a device needs to send a packet to an IP address, it sends an ARP request to get the MAC address. This is essential for LAN communication.
 
-**Example:**
-Agar aapka computer 192.168.1.10 se data bhejna chahta hai 192.168.1.20 par, toh wo pehle ARP request bhejega ki “192.168.1.20 ka MAC address kya hai?” Fir packet physically MAC address ke basis par bheja jayega.
+**Example:**  
+If your computer wants to send data to 192.168.1.20, it first sends an ARP request: “What is the MAC address for 192.168.1.20?” The packet is then sent physically using the MAC address.
 
 ---
 
 ## 4. **DHCP (Dynamic Host Configuration Protocol)**
 
-DHCP automatically devices ko IP addresses aur network settings assign karta hai taaki manually address configure na karna pade. Jab device network join karta hai, wo DHCP server se IP lease mangta hai. DHCP se network management asaan ho jaata hai, especially large networks mein.
+DHCP automatically assigns IP addresses and network settings to devices, eliminating manual configuration. When a device joins a network, it requests an IP lease from the DHCP server. DHCP simplifies network management, especially in large networks.
 
-**Example:**
-Jab aapka phone Wi-Fi se connect hota hai, toh wo automatically IP address DHCP server se leta hai. Offices mein har naye device ko IP address DHCP se milta hai. DHCP IP conflicts ko bhi rokta hai.
+**Example:**  
+When your phone connects to Wi-Fi, it automatically gets an IP from DHCP. Offices use DHCP to assign IPs to new devices, preventing IP conflicts.
 
 ---
 
 ## 5. **ICMP (Internet Control Message Protocol)**
 
-ICMP network devices ke beech error messages aur diagnostics ke liye use hota hai. Ye network issues jaise unreachable destination, time exceeded, ping response provide karta hai. ICMP network health monitor karne mein madad karta hai.
+ICMP is used for error messages and diagnostics between network devices. It reports issues like unreachable destinations, time exceeded, and ping responses. ICMP helps monitor network health.
 
-**Example:**
-Ping command ICMP ka use karta hai check karne ke liye ki ek device reachable hai ya nahi. Agar koi website down hai, toh ICMP unreachable message bhej sakta hai. Traceroute bhi ICMP packets use karta hai.
+**Example:**  
+The `ping` command uses ICMP to check if a device is reachable. If a website is down, ICMP sends an unreachable message. Traceroute also uses ICMP packets.
 
 ---
 
 ## 6. **RARP (Reverse Address Resolution Protocol)**
 
-RARP ek protocol hai jo MAC address se IP address find karta hai. Ye device ko apna IP address pata karne mein madad karta hai jab wo start hota hai. RARP ab kam use hota hai, DHCP ne iska kaam le liya hai.
+RARP finds an IP address from a MAC address. It helps devices discover their IP at startup. RARP is rarely used now, as DHCP has replaced it.
 
-**Example:**
-Network printer ya booting computer apna IP address RARP request bhej kar pata karta hai. Agar device ko IP pata nahi hai, toh wo RARP se network se poochta hai. Ye specially purane systems mein common tha.
+**Example:**  
+A network printer or booting computer uses RARP to find its IP. Older systems commonly used this.
 
 ---
 
 ## 7. **Subnetting**
 
-Subnetting ka matlab hai ek bade network ko chhote subnetworks mein divide karna taaki network management aur security behtar ho. Do prakar ke subnetting hote hain:
+Subnetting divides a large network into smaller subnets for better management and security. There are two types:
 
-* **Fixed Length Subnetting (FLSM):** Sab subnet equal size ke hote hain.
-* **Variable Length Subnetting (VLSM):** Subnet size alag-alag ho sakte hain, jisse address space efficiently use hota hai.
+* **Fixed Length Subnetting (FLSM):** All subnets are equal in size.  
+* **Variable Length Subnetting (VLSM):** Subnets vary in size, using address space efficiently.  
 
-**Example:**
-Company ke network ko department-wise alag subnets mein divide karna. FLSM mein sab departments ko equal IPs milte hain. VLSM mein HR ko kam aur IT ko zyada IPs diye jaate hain.
+**Example:**  
+A company divides its network by department. FLSM gives equal IPs to all departments. VLSM assigns more IPs to IT and fewer to HR.
 
 ---
 
 ### 1. **Fixed Length Subnetting**
 
-#### ➤ Sabhi subnets same size ke hote hain.
+#### ➤ All subnets are the same size.
 
 #### ➤ Example:
 
-Agar 192.168.1.0/24 ko 4 parts mein divide karna ho:
+Dividing 192.168.1.0/24 into 4 parts:
 
-* 192.168.1.0/26
-* 192.168.1.64/26
-* 192.168.1.128/26
-* 192.168.1.192/26
+* 192.168.1.0/26  
+* 192.168.1.64/26  
+* 192.168.1.128/26  
+* 192.168.1.192/26  
 
 ---
 
 ### 2. **Variable Length Subnetting (VLSM)**
 
-#### ➤ Alag-alag size ke subnets banaye jaate hain need ke hisaab se.
+#### ➤ Subnets are created in different sizes based on need.
 
 #### ➤ Example:
 
-* Ek subnet 100 logon ke liye chahiye → /25
-* Doosra subnet sirf 10 logon ke liye chahiye → /28
+* One subnet needs 100 hosts → /25  
+* Another needs only 10 hosts → /28  
 
-✅ **VLSM** efficient hai kyunki IPs waste nahi hote.
+✅ **VLSM** is efficient because IPs aren’t wasted.
 
 ---
 
-
 ## 🔷 **IPv4 (Internet Protocol Version 4)**
 
-### 📌 Kya hai?
+### 📌 What is it?
 
-IPv4 ek **network protocol** hai jo devices ko internet par ek **unique address** deta hai (jaise 192.168.1.1), taaki data sahi jagah pahunch sake.
+IPv4 is a **network protocol** that gives devices a **unique address** (e.g., 192.168.1.1) to ensure data reaches the right destination.
 
 ### ➤ Format:
 
-IPv4 address: `32-bit` ka hota hai (e.g. `192.168.0.1`)
+IPv4 address: `32-bit` (e.g., `192.168.0.1`)
 
 ---
 
 ### ✅ **IPv4 Header (Structure)**
 
-IPv4 packet ke upar ek **header** hota hai — isme important information hoti hai jise routers use karte hain data ko forward karne ke liye.
+The IPv4 packet has a **header** containing important information routers use to forward data.
 
 #### 1. **Version**
 
-* 4-bit field
-* Batata hai ki ye **IPv4** hai (value: `4`)
+* 4-bit field  
+* Indicates **IPv4** (value: `4`)  
 
 #### 2. **Header Length**
 
-* Batata hai header kitna bada hai (minimum 20 bytes)
+* Shows header size (minimum 20 bytes)  
 
 #### 3. **Services (Type of Service or DSCP)**
 
-* Priority batata hai (jaise: video call high priority, file download low)
-* Aaj ke time mein **DSCP (Differentiated Services Code Point)** ka use hota hai
+* Indicates priority (e.g., video call = high, file download = low)  
+* Modern networks use **DSCP (Differentiated Services Code Point)**  
 
 #### 4. **Total Length**
 
-* Pure IPv4 packet ka size (header + data)
-* Max: `65,535 bytes`
+* Entire IPv4 packet size (header + data)  
+* Max: `65,535 bytes`  
 
 #### 5. **Identification**
 
-* Har packet ko ek unique ID milti hai
-* Agar packet fragments mein bheja jaaye, to yahi ID unhe jodne mein madad karti hai
+* Unique ID for each packet  
+* Helps reassemble fragmented packets  
 
 #### 6. **Flags**
 
-* 3 bits hote hain:
-
-  * **DF (Don't Fragment)**: Fragment mat karo
-  * **MF (More Fragments)**: Aur fragments baaki hain ya nahi
-  * 1 reserved bit
+* 3 bits:  
+  * **DF (Don’t Fragment):** Do not fragment  
+  * **MF (More Fragments):** More fragments are coming  
+  * 1 reserved bit  
 
 #### 7. **Header Checksum**
 
-* Header sahi hai ya nahi, yeh verify karta hai (error detection)
-* Har router isay check karta hai
+* Verifies header integrity (error detection)  
+* Every router checks this  
 
 #### 8. **Source Address**
 
-* Data jahan se aaya hai (sender ka IP)
+* Sender’s IP  
 
 #### 9. **Destination Address**
 
-* Data kahan jaana hai (receiver ka IP)
+* Receiver’s IP  
 
 ---
 
 ## 🔷 **IPv6 (Internet Protocol Version 6)**
 
-### 📌 Kya hai?
+### 📌 What is it?
 
-IPv6, IPv4 ka **updated version** hai jisme **zyada addresses** aur **security & performance improvements** hain.
+IPv6 is an **updated version** of IPv4 with **more addresses** and **better security & performance**.
 
 ### ➤ Format:
 
-IPv6 address: `128-bit` ka hota hai (e.g. `2001:0db8:85a3:0000:0000:8a2e:0370:7334`)
+IPv6 address: `128-bit` (e.g., `2001:0db8:85a3:0000:0000:8a2e:0370:7334`)  
 
 ---
 
@@ -243,36 +241,36 @@ IPv6 address: `128-bit` ka hota hai (e.g. `2001:0db8:85a3:0000:0000:8a2e:0370:73
 
 #### 1. **Version**
 
-* 4-bit value (value: `6`) → batata hai ki ye IPv6 packet hai
+* 4-bit value (value: `6`) → indicates IPv6 packet  
 
 #### 2. **Traffic Class**
 
-* QoS (Quality of Service) ke liye hota hai — same as Type of Service in IPv4
+* For QoS (Quality of Service) — similar to IPv4’s Type of Service  
 
 #### 3. **Flow Label**
 
-* Special packets (like video/audio) ko track karta hai — unka unique flow banata hai
+* Tracks special packets (e.g., video/audio) with a unique flow  
 
 #### 4. **Payload Length**
 
-* Data ka actual size (header ke alawa), in bytes
+* Actual data size (excluding header), in bytes  
 
 #### 5. **Next Header**
 
-* Batata hai agla protocol kaunsa hai (TCP, UDP, ICMPv6 etc.)
+* Indicates the next protocol (TCP, UDP, ICMPv6, etc.)  
 
 #### 6. **Hop Limit**
 
-* Maximum kitne routers tak packet jaa sakta hai — har router is value ko 1 se kam karta hai
-* IPv4 me ise **TTL (Time to Live)** kehte hain
+* Maximum hops a packet can take — each router decrements this  
+* Called **TTL (Time to Live)** in IPv4  
 
 #### 7. **Source Address**
 
-* Sender ka 128-bit IPv6 address
+* Sender’s 128-bit IPv6 address  
 
 #### 8. **Destination Address**
 
-* Receiver ka 128-bit IPv6 address
+* Receiver’s 128-bit IPv6 address  
 
 ---
 
@@ -280,11 +278,11 @@ IPv6 address: `128-bit` ka hota hai (e.g. `2001:0db8:85a3:0000:0000:8a2e:0370:73
 
 | Feature               | IPv4                       | IPv6                           |
 | --------------------- | -------------------------- | ------------------------------ |
-| **Address Size**      | 32-bit (e.g., 192.168.1.1) | 128-bit (e.g., 2001\:db8::1)   |
-| **Total Addresses**   | \~4.3 billion              | \~3.4×10³⁸ (almost unlimited)  |
+| **Address Size**      | 32-bit (e.g., 192.168.1.1) | 128-bit (e.g., 2001:db8::1)    |
+| **Total Addresses**   | ~4.3 billion               | ~3.4×10³⁸ (almost unlimited)   |
 | **Header Size**       | 20–60 bytes                | Fixed 40 bytes                 |
 | **Configuration**     | Manual or DHCP             | Auto-configuration supported   |
-| **Security**          | Optional (via IPsec)       | Mandatory (IPsec is built-in)  |
+| **Security**          | Optional (via IPsec)       | Mandatory (IPsec built-in)     |
 | **Fragmentation**     | Routers & Sender           | Only sender                    |
 | **Checksum**          | Yes                        | No (handled by upper layers)   |
 | **Broadcast Support** | Yes                        | No (uses multicast instead)    |
@@ -296,9 +294,9 @@ IPv6 address: `128-bit` ka hota hai (e.g. `2001:0db8:85a3:0000:0000:8a2e:0370:73
 
 | IPv4                              | IPv6                              |
 | --------------------------------- | --------------------------------- |
-| Purana version, limited addresses | Naya version, unlimited addresses |
-| Chhota header                     | Simple but bigger header          |
-| Manual settings zyada             | Zyada automation                  |
+| Older version, limited addresses  | New version, unlimited addresses  |
+| Smaller header                    | Simplified but bigger header      |
+| More manual settings              | More automation                   |
 | Security optional                 | Security built-in                 |
 
 ---
@@ -307,50 +305,50 @@ IPv6 address: `128-bit` ka hota hai (e.g. `2001:0db8:85a3:0000:0000:8a2e:0370:73
 
 ### ✅ **What is it?**
 
-ICMP ek **network protocol** hai jo **messages** bhejta hai jab koi **error hoti hai** ya jab hume network ke baare mein kuch **information** chahiye hoti hai.
+ICMP is a **network protocol** that sends **messages** when there’s an **error** or when network **information** is needed.
 
-> 🧠 ICMP ko data bhejne ke liye nahi, **network ki condition check karne** ke liye use kiya jaata hai.
+> 🧠 ICMP is not for data transfer but for **checking network conditions**.
 
 ### ✅ **Uses of ICMP**
 
-1. **Error Reporting** (galti hone par message dena)
-2. **Query Management** (jaise: kisi device ka status check karna)
+1. **Error Reporting** (sending messages when something goes wrong)  
+2. **Query Management** (e.g., checking device status)  
 
 ---
 
 ### 📌 **1. Error Reporting**
 
-ICMP routers ya hosts ko inform karta hai agar:
+ICMP informs routers or hosts if:
 
-* Destination nahi mila
-* TTL expire ho gaya
-* Fragmentation problem hui
+* Destination is unreachable  
+* TTL expires  
+* Fragmentation fails  
 
 #### 🔹 Example:
 
-Aapne kisi wrong IP pe message bheja — router ICMP message bhejta hai:
-**"Destination Unreachable"**.
+Sending a message to a wrong IP → router sends:  
+**"Destination Unreachable"**.  
 
 🧾 Common ICMP Error Messages:
 
-* **Destination Unreachable**
-* **Time Exceeded**
-* **Parameter Problem**
+* **Destination Unreachable**  
+* **Time Exceeded**  
+* **Parameter Problem**  
 
 ---
 
 ### 📌 **2. Query Management**
 
-Ye ICMP ka part network status ke liye hota hai. Devices ek dusre se query karte hain.
+ICMP queries help check network status. Devices send requests to each other.
 
 #### 🔹 Example:
 
-Jab aap **`ping`** command chalate ho, to aapka computer ICMP echo request bhejta hai, aur saamne wala echo reply karta hai.
+When you use **`ping`**, your computer sends an ICMP echo request, and the destination replies.  
 
 🧾 Common ICMP Query Messages:
 
-* **Echo Request / Reply** (used in `ping`)
-* **Timestamp Request / Reply**
+* **Echo Request / Reply** (used in `ping`)  
+* **Timestamp Request / Reply**  
 
 ---
 
@@ -358,93 +356,92 @@ Jab aap **`ping`** command chalate ho, to aapka computer ICMP echo request bhejt
 
 ### ✅ **What is Routing?**
 
-Routing ka matlab hai **data ke liye best path** choose karna taaki wo source se destination tak efficiently pahunch sake.
+Routing means choosing the **best path** for data to travel efficiently from source to destination.
 
-📍 **Router** ye kaam karta hai — routing table ki madad se.
+📍 **Routers** do this using routing tables.
 
 ---
 
-
 # **Routing**
 
-Routing ka matlab hota hai network devices (jaise routers) ke dwara data packets ko source se destination tak bhejne ka process. Routing mein decide kiya jata hai ki packets kaunse raaste (path) se jayenge takki wo jaldi aur efficiently pohonch saken. Routing ke do main types hote hain — **Static Routing** aur **Dynamic Routing**.
+Routing is the process where network devices (like routers) send data packets from source to destination. Routing decides which path packets take to reach quickly and efficiently. There are two main types—**Static Routing** and **Dynamic Routing**.
 
 ---
 
 ## 1. **Static Routing**
 
-Static routing mein network administrator manually routers ke routes configure karta hai. Isme routes fixed hote hain, aur automatically change nahi hote. Ye chhote aur simple networks ke liye useful hota hai. Static routing fast hota hai kyunki routing table update nahi hoti, lekin agar network mein change ho toh manual update karna padta hai.
+In static routing, a network administrator manually configures routes on routers. Routes are fixed and don’t change automatically. This is useful for small, simple networks. Static routing is fast because the routing table isn’t updated, but manual updates are needed if the network changes.
 
-**Example:**
-Ek chhoti company ke 3 offices hain jise manually ek dusre se connect kar diya gaya hai. Agar ek office ka network change ho toh admin ko manually routers mein update karna padega. Ye static routing ka ek example hai.
+**Example:**  
+A small company has 3 offices manually connected. If one office’s network changes, the admin must manually update routers. This is static routing.
 
 ---
 
 ## 2. **Dynamic Routing**
 
-Dynamic routing mein routers khud apas mein baat kar ke routing information share karte hain aur automatically best routes find karte hain. Ye large aur complex networks ke liye useful hota hai. Dynamic routing mein routing protocols jaise RIP, OSPF, BGP use hote hain. Iska fayda ye hai ki network changes automatically update ho jate hain.
+In dynamic routing, routers share routing information and automatically find the best paths. This is useful for large, complex networks. Dynamic routing uses protocols like RIP, OSPF, and BGP. The advantage is that network changes update automatically.
 
-**Example:**
-Internet mein alag-alag networks dynamically routing protocols ka use karke apni routes update karte hain. Agar koi link down ho jata hai, toh routers automatically alternate route dhoond lete hain.
+**Example:**  
+On the internet, different networks use dynamic routing protocols to update routes. If a link fails, routers find alternate paths automatically.
 
 ---
 
 # **Forwarding**
 
-Forwarding ka matlab hota hai router ke paas aane wale data packets ko sahi output interface se bhejna, taaki wo apne destination tak pahunch saken.
+Forwarding means sending incoming data packets to the correct output interface so they reach their destination.
 
-Forwarding decisions lene ke liye router **routing table** ka use karta hai, jisme kuch terms hote hain:
+Routers use **routing tables** for forwarding decisions, which include:
 
 ---
 
 ### 1. **Next Hop**
 
-Next Hop ka matlab hai agla device ya router jise packet bhejna hai. Router ke paas ye information hoti hai ki packet ko agle step mein kis device ko dena hai.
+Next Hop is the next device or router to which the packet is sent. The router knows which device to forward the packet to next.
 
-**Example:**
-Agar packet A router par hai aur usse B router tak jaana hai, toh router A ke liye B hi next hop hoga.
+**Example:**  
+If a packet is at Router A and needs to go to Router B, then B is the next hop for A.
 
 ---
 
 ### 2. **Network**
 
-Network se matlab hai ek IP address range jo ek particular subnet ko represent karta hai. Routing table mein har entry ek network hoti hai jiska pata router ko hota hai.
+A network is an IP range representing a subnet. Each routing table entry is a network the router knows.
 
-**Example:**
-192.168.1.0/24 ek network hai jisme 256 IP addresses hain.
+**Example:**  
+192.168.1.0/24 is a network with 256 IP addresses.
 
 ---
 
 ### 3. **Default**
 
-Default route wo route hota hai jo tab use hota hai jab kisi destination ke liye specific route nahi milta. Isse routers “gateway of last resort” bhi kehte hain. Agar router ko packet ke liye matching network nahi milta toh packet default route se bhej diya jata hai.
+The default route is used when no specific route is found. Routers call this the "gateway of last resort." If no matching network is found, the packet is sent via the default route.
 
-**Example:**
-Agar router ko 10.10.10.5 IP address ka route nahi pata, toh wo packet ko default route pe bhej dega.
+**Example:**  
+If a router doesn’t know the route for 10.10.10.5, it sends the packet via the default route.
 
 ---
 
 # **Delivery**
 
-Delivery ka matlab hai packet ko destination device tak physically pohonchana. Isme do types hain:
+Delivery means physically sending packets to the destination device. There are two types:
 
 ---
 
 ### 1. **Direct Delivery**
 
-Direct delivery tab hoti hai jab source aur destination devices same network ya subnet mein hote hain. Is case mein data packet directly destination device ko bheja jaata hai bina kisi intermediate device ke.
+Direct delivery happens when source and destination are on the same network/subnet. Packets are sent directly without intermediate devices.
 
-**Example:**
-Agar aapka computer aur printer dono same office network mein hain, toh data directly printer ko bheja jayega.
+**Example:**  
+If your computer and printer are on the same office network, data is sent directly to the printer.
 
 ---
 
 ### 2. **Indirect Delivery**
 
-Indirect delivery tab hoti hai jab source aur destination alag networks mein hote hain. Is case mein data packet pehle router ko jata hai, fir router packet ko destination network mein forward karta hai.
+Indirect delivery happens when source and destination are on different networks. Packets first go to a router, which forwards them to the destination network.
 
-**Example:**
-Aapke ghar ka computer internet par kisi website ko access karta hai, toh data pehle router ko jayega, phir router website ke server tak bhejega.
+**Example:**  
+When your home computer accesses a website, data first goes to your router, which sends it to the website’s server.
 
 ---
 
@@ -452,190 +449,190 @@ Aapke ghar ka computer internet par kisi website ko access karta hai, toh data p
 
 | Term                 | Meaning                                                   |
 | -------------------- | --------------------------------------------------------- |
-| **ICMP**             | Network errors aur test messages ke liye protocol         |
-| **Error Reporting**  | ICMP batata hai agar packet delivery mein koi problem ho  |
-| **Query Management** | ICMP network ke status check karta hai (`ping`, etc.)     |
-| **Routing**          | Best path choose karna for data                           |
+| **ICMP**             | Protocol for network errors and test messages             |
+| **Error Reporting**  | ICMP reports packet delivery issues                       |
+| **Query Management** | ICMP checks network status (`ping`, etc.)                 |
+| **Routing**          | Choosing the best path for data                           |
 | **Static Routing**   | Manually set routes                                       |
-| **Dynamic Routing**  | Automatically choose best path                            |
-| **Forwarding**       | Packet ko next device tak bhejna                          |
-| **Next Hop**         | Agla router                                               |
-| **Default**          | Jab specific route na ho, to ek general path follow karna |
-| **Delivery**         | Packet ka destination tak pahunchna                       |
+| **Dynamic Routing**  | Automatically chooses the best path                       |
+| **Forwarding**       | Sending packets to the next device                        |
+| **Next Hop**         | The next router                                           |
+| **Default**          | General path used when no specific route exists           |
+| **Delivery**         | Getting packets to their destination                      |
 | **Direct**           | Same network                                              |
-| **Indirect**         | Alag network (routers ke through)                         |
+| **Indirect**         | Different networks (via routers)                          |
 
 ---
 
 # **The Optimality Principle**
 
-Optimality principle kehta hai ki agar router A se router C tak ka shortest path pata hai, toh agar ye path router B se bhi guzarta hai, toh B se C tak ka path bhi shortest hoga. Matlab, network mein har intermediate node par bhi best route select hota hai. Is principle ki wajah se routing algorithms efficient decisions le pate hain.
+The Optimality Principle states that if the shortest path from Router A to Router C passes through Router B, then the path from B to C is also the shortest. This means every intermediate node selects the best route, helping routing algorithms make efficient decisions.
 
-**Example:**
-Agar Delhi se Mumbai ka shortest route Jaipur se guzarta hai, toh Jaipur se Mumbai ka bhi wahi shortest route hoga. Isi tarah routers apni routing tables update karte hain.
+**Example:**  
+If the shortest Delhi-Mumbai route passes through Jaipur, then Jaipur-Mumbai is also the shortest. Routers update their tables accordingly.
 
 ---
 
 # **Shortest Path Algorithm**
 
-Shortest Path Algorithm ka kaam hota hai network mein data ke liye sabse chhota (shortest) aur best path find karna.
+The Shortest Path Algorithm finds the smallest (shortest) and best path for data in a network.
 
 ---
 
 ## **Dijkstra’s Algorithm**
 
-Dijkstra ka algorithm network mein har node se destination tak ka shortest path find karta hai. Ye har node ka distance calculate karta hai aur minimum distance wala path select karta hai. Ye algorithm link state routing protocols mein use hota hai.
+Dijkstra’s algorithm finds the shortest path from each node to the destination. It calculates distances and selects the path with the minimum distance. Used in link-state routing protocols.
 
-**Example:**
-Ek graph jisme 4 cities connected hain, Dijkstra algorithm se hum pata karenge Delhi se Mumbai ka shortest raasta kaunsa hai. Har connection ka weight (distance/time) hota hai, aur algorithm minimum sum wala path batata hai.
+**Example:**  
+A graph with 4 connected cities—Dijkstra’s algorithm finds the shortest Delhi-Mumbai route. Each connection has a weight (distance/time), and the algorithm picks the path with the lowest sum.
 
 ---
 
 # **Flooding**
 
-Flooding ek simple routing technique hai jisme har incoming packet ko router apne sabhi interfaces par bhej deta hai, except jis interface se packet aaya ho. Iska fayda ye hai ki packet apni destination tak jarur pahunchta hai, lekin network traffic bahut badh jata hai (overhead).
+Flooding is a simple routing technique where a router sends every incoming packet to all interfaces except the one it came from. The advantage is guaranteed delivery, but it increases network traffic (overhead).
 
-**Example:**
-Agar aap ek message sabko bhejna chahte hain bina pata ki kis route se jayega, toh sabko message forward kar dena flooding hai. Jaise ek group chat mein sabko ek baar mein message bhejna.
+**Example:**  
+Sending a message to everyone without knowing the route—like broadcasting in a group chat.
 
 ---
 
 # **Distance Vector Routing**
 
-Distance vector routing mein har router apne neighbours ko apni routing table deta hai, jisme har network ka distance (vector) hota hai. Routers apni tables update karte hain jab unke neighbours ke pass naye routes hote hain. Ye algorithm slow converge karta hai aur count-to-infinity problem hota hai.
+In distance vector routing, each router shares its routing table (with network distances) with neighbors. Routers update tables when neighbors have new routes. This algorithm converges slowly and has a count-to-infinity problem.
 
-**Example:**
-RIP (Routing Information Protocol) distance vector routing use karta hai. Router A apne neighbours ko batata hai ki 5 hops door ek network hai. Neighbours bhi apne data share karte hain aur sab apni tables update karte hain.
+**Example:**  
+RIP (Routing Information Protocol) uses distance vector routing. Router A tells neighbors a network is 5 hops away. Neighbors share their data, and all update their tables.
 
 ---
 
 # **Link State Routing**
 
-Link state routing mein har router apni directly connected links ki state network mein sabhi routers ko broadcast karta hai. Sab routers complete network ka topology jante hain aur Dijkstra algorithm se shortest path calculate karte hain. Ye fast aur reliable hota hai.
+In link-state routing, each router broadcasts its directly connected links’ status to all routers. All routers know the full network topology and use Dijkstra’s algorithm to find the shortest path. Fast and reliable.
 
-**Example:**
-OSPF (Open Shortest Path First) protocol link state routing use karta hai. Har router apne connections ke baare mein sabko batata hai, fir sabhi routers ek jaisa map banate hain network ka.
+**Example:**  
+OSPF (Open Shortest Path First) uses link-state routing. Each router shares its connections, and all build the same network map.
 
 ---
 
 # **Multicast Routing**
 
-Multicast routing mein ek source se data ko multiple selected destinations (group) tak efficiently bheja jata hai. Ye broadcast se alag hota hai kyunki data sirf interested devices tak jata hai, unnecessary devices tak nahi.
+Multicast routing efficiently sends data from one source to multiple selected destinations (group). Unlike broadcast, data goes only to interested devices.
 
-**Example:**
-Live sports streaming mein jab ek broadcaster apne signal ko ek group of users tak bhejta hai, multicast routing use hota hai. Sirf jo users stream dekhna chahte hain unko data milta hai.
+**Example:**  
+Live sports streaming—only users watching get the data.
 
 ---
 
 # **Broadcast Routing**
 
-Broadcast routing mein data packet network ke sabhi devices tak bheja jata hai. Ye local networks mein hota hai jaise ARP requests, jisme sabko packet forward kar diya jata hai.
+Broadcast routing sends data packets to all devices on a network. Used in local networks (e.g., ARP requests).
 
-**Example:**
-Jab aapka computer apne network par sab devices se poochta hai ki “Is IP address 192.168.1.5 kisi ka hai?” toh wo broadcast hota hai.
+**Example:**  
+Your computer asking the network, “Who has IP 192.168.1.5?” is a broadcast.
 
 ---
 
 # **Congestion**
 
-Congestion tab hota hai jab network mein data traffic zyada ho jata hai aur devices packets ko process nahi kar pate, jisse delay aur packet loss hota hai.
+Congestion occurs when network traffic exceeds capacity, causing delays and packet loss.
 
 ---
 
 ## **Congestion Control**
 
-Congestion control techniques ka goal hota hai network ko congested hone se bachana aur traffic smooth chalana.
+Congestion control techniques prevent network overload and ensure smooth traffic flow.
 
 ---
 
 ### Open Loop Congestion Control
 
-Open loop control mein congestion hone se pehle hi control measures lagaye jaate hain.
+Open loop control applies measures before congestion happens.
 
-* **Retransmission:** Agar packet lost ho jata hai toh use dobara bheja jata hai.
-* **Window:** Flow control ke liye window size manage ki jati hai, jisse ek time par kitne packets bheje jayenge decide hota hai.
+* **Retransmission:** Lost packets are resent.  
+* **Window:** Flow control manages how many packets are sent at once.  
 
-**Example:**
-TCP protocol retransmission aur sliding window ka use karta hai taaki data reliable rahe.
+**Example:**  
+TCP uses retransmission and sliding windows for reliability.
 
 ---
 
 ### Closed Loop Congestion Control
 
-Closed loop control mein congestion detect hone ke baad measures liye jate hain.
+Closed loop control reacts after detecting congestion.
 
-* **Back Pressure:** Switch ya router congested hone par apne upstream devices ko signal deta hai traffic rokne ke liye.
-* **Choke Packet:** Router congested hone par source device ko ek special packet bhejta hai jisme kaha jata hai ki traffic slow karo.
+* **Back Pressure:** A congested switch signals upstream devices to stop traffic.  
+* **Choke Packet:** A router sends a special packet asking the source to slow down.  
 
-**Example:**
-Jab router busy ho jata hai, wo source ko choke packet bhej kar data bhejne ki speed kam karne ke liye kehta hai.
+**Example:**  
+A busy router sends a choke packet to reduce data speed.
 
 ---
 
 
 # **QoS (Quality of Service)**
 
-QoS network mein data transmission ki quality ko ensure karta hai, taaki important data timely aur reliably pohonche. QoS ka use especially real-time applications jaise video calls, online gaming, aur VoIP mein hota hai jahan data ka delay ya loss unacceptable hota hai. QoS ke kuch main parameters hain:
+QoS ensures high-quality data transmission, especially for real-time apps like video calls, gaming, and VoIP where delay or loss is unacceptable. Key QoS parameters:
 
 ---
 
 ## 1. **Reliability**
 
-Reliability ka matlab hai data ka sahi aur bina loss ke delivery hona. Reliable network mein data packets drop nahi hote ya agar drop hote hain toh wo dobara bheje jate hain. TCP protocol is reliability ko ensure karta hai.
+Reliability means data is delivered correctly without loss. Reliable networks retransmit lost packets. TCP ensures reliability.
 
-**Example:**
-Email bhejte waqt, agar packet loss hota hai, toh wo automatically retransmit hota hai, taaki aapka email pura receiver tak pahunch jaye.
+**Example:**  
+If an email packet is lost, it’s resent automatically.
 
 ---
 
 ## 2. **Delay**
 
-Delay ka matlab hota hai packet ke source se destination tak pahunchne mein lagne wala samay. Kam delay ka matlab network fast hai. Real-time applications mein delay kaafi important hota hai.
+Delay is the time taken for a packet to reach its destination. Low delay means a fast network. Critical for real-time apps.
 
-**Example:**
-Video call mein agar delay zyada ho toh conversation mein gap lagega. Jaise aap kisi se baat kar rahe ho aur dusra banda aapki baat sunne mein late ho.
+**Example:**  
+High delay in video calls causes gaps in conversation.
 
 ---
 
 ## 3. **Jitter**
 
-Jitter delay ka variation hota hai, yani packets randomly late ya jaldi pohonchna. Ye real-time streaming mein problem create karta hai kyunki packets ke timing consistent nahi hote.
+Jitter is delay variation—packets arriving inconsistently. Causes issues in real-time streaming.
 
-**Example:**
-Online game khelte waqt agar jitter zyada ho toh aapke character ke moves irregular ho jayenge.
+**Example:**  
+High jitter in online games makes movements irregular.
 
 ---
 
 ## 4. **Bandwidth**
 
-Bandwidth network ki capacity hoti hai ki wo kitna data ek second mein transfer kar sakta hai. Zyada bandwidth matlab network zyada data ko handle kar sakta hai.
+Bandwidth is the network’s data transfer capacity. Higher bandwidth means more data can be handled.
 
-**Example:**
-Agar aapke ghar ka internet 100 Mbps ka hai, toh aap ek second mein 100 Megabits data download kar sakte ho. Streaming HD video ke liye bandwidth important hoti hai.
+**Example:**  
+A 100 Mbps internet connection lets you download 100 Mbps per second. HD streaming needs good bandwidth.
 
 ---
 
 # **Congestion Algorithms**
 
-Congestion algorithms network mein traffic control karte hain taaki congestion na ho aur data smoothly flow kare. Do popular algorithms hain:
+Congestion algorithms control traffic to prevent congestion and ensure smooth data flow. Two popular algorithms:
 
 ---
 
 ## 1. **Leaky Bucket Algorithm**
 
-Leaky Bucket algorithm network traffic ko regulate karta hai jaise ek bucket se paani thoda-thoda nikalta hai. Agar bucket bhar jaye toh extra packets drop ho jate hain. Ye traffic ko constant rate se flow karata hai.
+The Leaky Bucket regulates traffic like water leaking from a bucket. If the bucket overflows, excess packets are dropped. It maintains a constant flow rate.
 
-**Example:**
-Aap ek pipe se paani bhar rahe hain jo thoda thoda nikal raha hai. Agar paani bahut zyada aane lage toh overflow ho jayega, waise hi agar packets zyada aaye toh drop honge.
+**Example:**  
+Filling a leaky pipe—if too much water is poured, it overflows. Similarly, excess packets are dropped.
 
 ---
 
 ## 2. **Token Bucket Algorithm**
 
-Token Bucket mein tokens generate hote hain ek fixed rate se. Packet bhejne ke liye token chahiye hota hai. Agar tokens available hain toh packets bheje jate hain, nahi toh wait karna padta hai. Ye bursty traffic ko allow karta hai.
+Tokens are generated at a fixed rate. A packet needs a token to be sent. If no tokens are available, packets wait. Allows bursty traffic.
 
-**Example:**
-Aapko token lena hota hai swimming pool mein enter karne ke liye. Agar tokens hain toh turant jaa sakte hain, nahi toh line mein wait karna padega. Isse sudden bursts handle ho jate hain.
+**Example:**  
+Tokens are like pool passes—if available, you enter immediately; otherwise, you wait. Handles sudden traffic bursts.
 
 ---
 
