@@ -144,29 +144,61 @@ Jaise: *“Sab unknown logon ko gatekeeper ke paas bhej do.”*
 
 ---
 
-### **Distance Vector Routing**
 
-* Routers share distance to all known networks with neighbors.
+### 🧮 **Distance Vector Routing (DVR)**
+
+* Har router apne **neighbour routers** ko ye batata hai:
+  *“Mujhe kis network tak pahuchne me kitni distance (hops/time/cost) lagti hai.”*
+
+* **Example**:
+
+  * Router A bolta hai: "Mujhe Network X tak 2 hops lagte hain."
+  * Router B sunta hai aur bolta: "Agar mujhe A tak 1 hop lagta hai, to X tak 3 hops lagengi via A."
+
+* **Matlab**: Har router ek *chhoti si table* banata hai:
+
+  * Destination → Distance → Next Hop
+
+* Ye process bar-bar repeat hoti hai jab tak sab routers ke paas best distances aa jaate hain.
+
+* **Limitation**: Slow updates, kabhi-kabhi loop bhi ban jaate hain (Count to infinity problem).
+
+Iska dimaag simple hai: **"Bas mujhe bata tu kitni door hai, mai dekh leta hoon kaunsa best raasta hai."**
 
 ---
 
-### **Link State Routing**
+### 🗺️ **Link State Routing**
 
-* Routers share entire network topology info and compute best paths.
+* Har router apne nearby routers ka **complete map** banata hai:
+  *“Mere aas-paas ye routers hain, aur un tak ye cost hai.”*
+
+* Phir sab routers apna yeh map **sabko bhejte hain** (flooding se).
+
+* Sab routers ke paas same map hota hai → **Har router khud best path calculate karta hai** (Dijkstra use karke).
+
+📌 Jaise Google Maps: Har banda khud best route nikaalta hai full map dekh ke.
+
+---
+
+### 📡 **Multicast Routing**
+
+* Ek hi data ko **multiple selected receivers** ko bhejna hai.
+
+📌 Jaise online class – sirf jo students group me hain unko lecture milega, sabko nahi.
+
+* Efficient hai: **na to sabko bhejna padta, na baar-baar same data.**
 
 ---
 
-### **Multicast Routing**
+### 📢 **Broadcast Routing**
 
-* Delivers data to a group of destinations efficiently.
+* Ek message **poore network me sabko** bhejna hai.
 
----
+📌 Jaise loudspeaker announcement – sab log sunenge, chaahe unko zarurat ho ya nahi.
 
-### **Broadcast Routing**
+* Used in: ARP requests, initial DHCP request, etc.
 
-* Sends data to all nodes in the network.
 
----
 
 ### **Congestion**
 
