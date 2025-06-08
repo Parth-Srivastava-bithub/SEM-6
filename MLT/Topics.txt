@@ -1,0 +1,25 @@
+Machine learning
+    Key points
+    Types
+        Supervised learning
+        Unsupervised learning
+        Semi-supervised learning
+        Reinforcement learning
+    Applications
+    
+Supervised
+    Regression
+    Classification
+Unsupervised
+    Clustering
+        K-Means 
+        KNN
+        Hierarchical clustering
+        Neural 
+        Anamoly detection
+Reinforcement learning
+Desision Tree algorithm
+    Example:- Designing the learning system
+Genetic algorithm
+SVM
+Issues of machine learning and data science
