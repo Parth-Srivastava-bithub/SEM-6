@@ -23,3 +23,19 @@ Desision Tree algorithm
 Genetic algorithm
 SVM
 Issues of machine learning and data science
+
+
+---
+
+
+Linear regression
+Logistic regression
+Bias theorem
+Nav bias theorem
+Types mathematical Bernoulli and Gaussian
+Now explain what is training data what is training and what is prediction
+Explain what is concept learning and steps in concept learning from define hypothesis space to collect training examples then initialize the learning algorithm then iterate through examples then generalize and specialize then evaluate the hypothesis
+explain what is EM algorithm thumb and there's major concept like expectations tab and maximization step step then word king then there's a flow chart of it and there is initialization and then there is E and then there is M and then there is a loop and then there is a termination condition
+
+Now explain the M stepconvergenceand the bias in belief networkand key concepts which are nodes edges and conditional probabilities
+Also explain now support vector machine their key points which are hyperplane support vectors margins and kernel methods which have some four types which are linear polynomial and radial bias function which is rbf kernel and then sigmoid kernel
