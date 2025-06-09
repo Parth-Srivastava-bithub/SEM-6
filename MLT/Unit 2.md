@@ -555,8 +555,11 @@ Bias ka aana common hai jab data skewed ho ya network ka structure galat ho.
    * Har node ke saath ek **CPT (Conditional Probability Table)** hota hai
    * Jaise:
 
+
      $$
+
      P(Traffic | Weather = Rainy) = 0.8
+
      $$
 
 ---
