@@ -52,3 +52,16 @@ Now under ID3 algorithm write explain each point compute entropy for each attrib
 Now the next topic is KNN algorithm
 Explain all the steps of choosing the numbers of neighbours and calculating the distance identifying the K nearest neighbours and making a prediction with an example of numerical so that we can understand how it would work
 Explain now explain the case based learning and what are the steps inside it which is retrieved reuse revise and retain and what are the Applications
+
+
+---
+
+Explain multi layer perceptron network which contains three layerinput hidden and output layer with the diagram in a ascii artt
+Explain the working of machine learning preceptron which contains parts explain all parts in detail first is neurons and weights 2nd is activation function then forward propagation then learning of training the network with loss function and repropagation 
+Explain now back propagation algorithm with same steps initialization forward propagation Loss calculation backward propagation weight and bias update and iteration
+Now explain SOM algorithm and its variant of self organising map and other variants to workingis explain the working of it also which is initialization training update Iteration and then variation of SOM which is batch growing hierarchicaland parametric then explain application of soam which are data visualisation colouring pattern recognition and feature mapping
+Now explain this CNN and its layers what is CNN and how and what it used for what purpose
+Explain the layers of cnn which are first is convolutional layer than activational function then type switches linear than sigmoid and then tan hyperbolic function then relll function Binary step function
+Polling layers fully connectedlayer type Max pulling average pulling
+Case study of cnn which is diabetic ratinopathy process conventional layer activational layer pooling layer fully connected layer benefitsand then building a smart speaker same layers
+Next plain self driving cars with CNN
