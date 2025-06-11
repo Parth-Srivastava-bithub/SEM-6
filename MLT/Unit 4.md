@@ -171,34 +171,9 @@ Backpropagation ek supervised learning algorithm hai jo neural networks ko train
 
 ---
 
-### 🧩 Example
-
-Maan lijiye ek simple neural network hai with:
-
-* **Input**: \[0.5, 0.3]
-* **Weights**: \[0.4, 0.6]
-* **Bias**: 0.1
-* **Activation Function**: Sigmoid
-
-**Forward Propagation**:
-
-* Weighted sum: $0.5 \times 0.4 + 0.3 \times 0.6 + 0.1 = 0.38$
-* Output: $ \sigma(0.38) = \frac{1}{1 + e^{-0.38}} \approx 0.594$
-
-**Loss Calculation**:
-
-* Actual output: 0.8
-* Loss: $(0.8 - 0.594)^2 \approx 0.0428$
-
-**Backward Propagation**:
-
-* Error: $0.8 - 0.594 = 0.206$
-* Gradient: $\frac{\partial \text{Loss}}{\partial W} = 0.206 \times \sigma'(0.38)$
-* Update weights using gradient descent.
-
----
-
 ## 🧭 Part 2: Self-Organizing Map (SOM)
+
+![alt text](image-2.png)
 
 ### 🧠 Overview
 
@@ -265,6 +240,8 @@ Maan lijiye ek dataset hai with 2D points: \[(0.1, 0.2), (0.4, 0.5), (0.7, 0.8)]
 
 3. **Hierarchical SOM**:
 
+   ![alt text](image-3.png)
+
    * Multiple SOMs ko hierarchical structure mein arrange kiya jaata hai.
    * Complex data structures ko capture karne mein madad karta hai.
 
@@ -297,6 +274,8 @@ Maan lijiye ek dataset hai with 2D points: \[(0.1, 0.2), (0.4, 0.5), (0.7, 0.8)]
 
 
 ## 🧠 **What is CNN (Convolutional Neural Network)?**
+
+![alt text](image-4.png)
 
 CNN ek **Deep Learning algorithm** hai jo mainly **image recognition, classification, face detection, handwriting recognition,** jaise tasks ke liye use hota hai.
 
@@ -417,6 +396,8 @@ Agar aapka image ek dog hai, to fully connected layer decide karegi:
 * Output = \[0.98 (Dog), 0.01 (Cat), 0.01 (Horse)]
 
 ---
+
+![alt text](image-5.png)
 
 ## 🔁 **CNN Workflow Summary**
 
