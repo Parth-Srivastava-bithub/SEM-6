@@ -2,6 +2,8 @@
 
 Socho tum subah uth kar decide karte ho:
 
+![alt text](image-28.png)
+
 * **Aaj kya pehnun?**
 * **Bahar mausam kaisa hai?**
 * **Kahin jana hai ya ghar pe hoon?**
@@ -567,6 +569,8 @@ $$
 $$
 
 ---
+
+![alt text](image-29.png)
 
 ## ✅ Summary of KNN Steps:
 
