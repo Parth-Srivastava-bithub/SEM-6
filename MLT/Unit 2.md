@@ -2,6 +2,8 @@
 
 ### 🔍 What is it?
 
+![alt text](image-21.png)
+
 Linear Regression ek supervised machine learning algorithm hai jo **continuous output** predict karta hai — jaise ki house price, salary, marks, etc.
 
 Ye basically input (x) aur output (y) ke beech ek **straight line ka relation** dhoondhta hai. Matlab: "Jitna x badhega, utna y badhega ya ghathega."
@@ -66,6 +68,8 @@ To model bolta hai: **"Is student ke 45 marks aayenge."**
 ---
 
 ## **2. Logistic Regression**
+
+![alt text](image-22.png)
 
 ### 🔍 What is it?
 
@@ -160,6 +164,8 @@ Agar aap ek bahut hi simple model se house price predict karne ki koshish kar ra
 ---
 
 ## **4. Naïve Bayes Theorem**
+
+![alt text](image-23.png)
 
 > Aapne shayad “Naïve Bias Theorem” likha tha, lekin machine learning mein iska correct naam hai: **Naïve Bayes Theorem**.
 
@@ -271,6 +277,8 @@ Man lo hamare paas ek medical dataset hai jisme patient ki **body temperature** 
 ---
 
 ## ✅ **Training Data, Training, and Prediction**
+
+![alt text](image-24.png)
 
 ### 🔹 What is Training Data?
 
@@ -499,19 +507,7 @@ $$
 
 ### 🔄 EM Algorithm Flowchart (Hinglish Summary):
 
-```
-START
-  ↓
-Initialize parameters (guess)
-  ↓
-Repeat:
-   → E-Step (hidden variable ki probabilities estimate karo)
-   → M-Step (parameters ko update karo)
-Until:
-   → Convergence (values stable ho jaayein)
-  ↓
-STOP
-```
+![alt text](image-26.png)
 
 ---
 
@@ -571,6 +567,8 @@ Bias ka aana common hai jab data skewed ho ya network ka structure galat ho.
 SVM ek supervised learning algorithm hai jo mostly **classification problems** ke liye use hoti hai. Yeh data points ko separate karta hai ek **optimal boundary** (ya line/plane) ke through, jise **hyperplane** bolte hain.
 
 ---
+
+![alt text](image-27.png)
 
 ### 🔑 Key Concepts of SVM:
 
