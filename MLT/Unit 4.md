@@ -7,18 +7,9 @@ Multi-Layer Perceptron ek aisa neural network hota hai jo **multiple layers of n
 
 ---
 
-### 🧠 **ASCII Diagram of MLP (1 Hidden Layer)**
+![alt text](image-1.png)
 
-```
-Input Layer        Hidden Layer         Output Layer
-    (x1)  ●  ----\                         (y1)  ●
-                \                         /
-    (x2)  ●  ----●----\       --->      ●
-                       \               /
-    (x3)  ●  ----●----●----●-------->  ●
-                       /   /
-    (x4)  ●  ----●----/   /
-```
+![alt text](image.png)
 
 **Explanation:**
 
@@ -233,9 +224,9 @@ Self-Organizing Map ek unsupervised learning algorithm hai jo high-dimensional d
 
    * Weight update formula:
 
-     $$
+     $
      W_{\text{new}} = W_{\text{old}} + \eta \times \theta(u, v, t) \times (D(t) - W_{\text{old}})
-     $$
+     $
 
      Jahan:
 
