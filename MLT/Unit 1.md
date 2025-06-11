@@ -10,6 +10,8 @@ Machine Learning ek branch hai Artificial Intelligence ki, jisme computer system
 
 Is learning me machine ko **labelled data** diya jata hai — matlab har input ke sath correct output bhi diya jata hai. Algorithm in examples se **mapping seekhta hai**, taaki naye inputs pe sahi prediction kar sake.
 
+![alt text](image-6.png)
+
 ### 📘 Real-life Example:
 
 * Email spam detection: Aapne pehle 1000 emails ko “spam” ya “not spam” label kiya. Ab machine naye emails ko usi basis par judge kar leti hai.
@@ -34,6 +36,8 @@ Jaise ek teacher bacche ko questions ke answers ke sath padhaata hai — “Yeh 
 
 Isme data **unlabelled** hota hai — matlab inputs diye jaate hain, par unka correct output nahi diya jata. Machine khud se patterns aur similarities dhundhti hai.
 
+![alt text](image-8.png)
+
 ### 📘 Real-life Example:
 
 * Customer Segmentation: Ek e-commerce site apne customers ko unke shopping behavior ke basis pe groups me divide karti hai — “bargain hunters”, “frequent buyers”, “brand lovers”, etc.
@@ -57,6 +61,8 @@ Jaise aap ek party me naye logon ke beech jaake bas unka behavior dekh kar andaz
 
 Is approach me **thoda data labelled hota hai aur baaki unlabelled**. Machine labelled data se seekhti hai aur unlabelled data ka bhi use karti hai model ko aur accurate banane ke liye.
 
+![alt text](image-7.png)
+
 ### 📘 Real-life Example:
 
 * Google Photos face recognition: Aapne sirf kuch photos ko “Ravi” naam se tag kiya, aur machine automatically baaki similar faces ko bhi “Ravi” bolne lagti hai.
@@ -78,6 +84,8 @@ Jaise class me teacher sirf kuch students ko concept samjhaati hai, aur baaki st
 ### 👉 Definition:
 
 Isme machine **khud environment ke sath interact karti hai**, aur har action ke baad **reward ya penalty** milta hai. Machine goal achieve karne ke liye trial-and-error se seekhti hai.
+
+![alt text](image-9.png)
 
 ### 📘 Real-life Example:
 
@@ -121,6 +129,8 @@ Supervised learning me hum machine ko **labelled data** dete hain — jisme inpu
 
 ### 📘 **A. Regression (Continuous Output)**
 
+![alt text](image-10.png)
+
 #### 🔹 Explanation:
 
 Regression ka use tab hota hai jab hume kisi **continuous value** ka prediction karna hota hai (jaise price, temperature, salary, etc.).
@@ -146,6 +156,8 @@ Jaise ek astrologer janam kundali ke data se future salary ka estimate batata ha
 #### 🔹 Explanation:
 
 Classification me machine ko categories ya classes predict karni hoti hain, jaise "spam ya not spam", "pass ya fail".
+
+![alt text](image-12.png)
 
 #### ✅ Real-life Example:
 
@@ -177,6 +189,8 @@ Unsupervised learning me **data labelled nahi hota**. Machine khud se patterns a
 
 Clustering me similar type ke data points ko ek group me daala jata hai bina kisi label ke.
 
+![alt text](image-13.png)
+
 #### ✅ Real-life Example:
 
 * Market Segmentation: Business customers ko unke behavior ke basis pe alag-alag segments me divide karta hai.
@@ -196,10 +210,14 @@ Jaise ek school me teacher naye students ke behavior dekh kar groups banati hai 
 
 ##### 2. **K-NN (k-Nearest Neighbors)** – *Note: Ye supervised aur unsupervised dono me use hota hai*
 
+![alt text](image-14.png)
+
 * Ye mostly classification me use hota hai, lekin clustering me bhi use ho sakta hai for density-based clustering.
 * Example: Nearby customers ke basis par naye customer ko kisi group me daalna.
 
 ##### 3. **Hierarchical Clustering**
+
+![alt text](image-15.png)
 
 * Ye tree-like structure (dendrogram) banata hai jisme data ko step-by-step group karta hai.
 * Example: Biological taxonomy (species ka classification).
@@ -279,6 +297,8 @@ Jaise ek dog ko train karte hain: sahi kaam pe biscuit (reward) milta hai, galat
 
 > "Yes/No type decisions leke final result tak pahuchna"
 
+![alt text](image-16.png)
+
 ### 🔹 Explanation:
 
 Decision Tree ek **tree-like model** hota hai jisme har node ek decision point hota hai. Ye data ke features ke base par split karta hai aur finally ek output class ya value deta hai.
@@ -302,6 +322,8 @@ Ye pura tree ban jata hai decisions ka.
 ---
 
 ## 🧬 **3. Genetic Algorithm (GA)**
+
+![alt text](image-17.png)
 
 > "Survival of the fittest" wale principle pe based
 
@@ -327,6 +349,10 @@ Jaise insaan genetic traits se better hota jaata hai generations me — waise hi
 ---
 
 ## 🔶 **4. SVM – Support Vector Machine**
+
+![alt text](image-18.png)
+
+![alt text](image-19.png)
 
 > "Clear boundary banana between classes"
 
@@ -359,6 +385,8 @@ Jaise ek referee do teams ke beech boundary line banata hai — SVM bhi do class
 * Biased data (ek side ka jhukav)
 
 ### 🔹 B. **Overfitting & Underfitting**
+
+![alt text](image-20.png)
 
 * **Overfitting**: Model training data ko yaad kar leta hai, naya data nahi samajh pata.
 * **Underfitting**: Model simple ban jata hai, training data bhi sahi se nahi samajh pata.
