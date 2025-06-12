@@ -37,6 +37,8 @@ Iska main problem hai: **Collision** – jab 2 ya zyada devices ek hi waqt me da
 
 ##### a) **Pure ALOHA**
 
+![alt text](image-12.png)
+
 * Devices kisi bhi waqt data bhej sakti hain.
 * Collision hone ka chance **zyada** hota hai.
 * Agar collision ho gaya, toh data ko fir se bhejna padta hai random time ke baad.
@@ -47,6 +49,8 @@ Iska main problem hai: **Collision** – jab 2 ya zyada devices ek hi waqt me da
 
 ##### b) **Slotted ALOHA**
 
+![alt text](image-13.png)
+
 * Time ko slots me divide kiya gaya hai.
 * Devices sirf **slot ke start** me hi data bhej sakti hain.
 * Collision hone ka chance **kam** ho jata hai compare to Pure ALOHA.
@@ -56,6 +60,8 @@ Iska main problem hai: **Collision** – jab 2 ya zyada devices ek hi waqt me da
 ---
 
 #### 🔸 2. **CSMA (Carrier Sense Multiple Access)**
+
+![alt text](image-14.png)
 
 Yahaan device pehle **channel sunta hai** (carrier sense karta hai), agar free ho tabhi data bhejta hai.
 
@@ -134,6 +140,8 @@ Multiple devices ek hi channel share kar sakein, iske liye use hote hain **Chann
 
 ### 🔸 **FDMA (Frequency Division Multiple Access)**
 
+![alt text](image-15.png)
+
 * Channel ko alag-alag **frequencies** me divide karte hain.
 * Har device ko ek frequency slot diya jata hai.
 * Ek time me multiple users data bhej sakte hain.
@@ -145,17 +153,16 @@ Radio stations – FM 98.3, FM 104 – sab ek hi air me hote hain, but alag freq
 
 ### 🔸 **TDMA (Time Division Multiple Access)**
 
+![alt text](image-16.png)
+
 * Channel ko alag-alag **time slots** me divide kiya jata hai.
 * Har device ko ek time slot diya jata hai data bhejne ke liye.
 
-🧠 Example:
+🧠 Example: 
 Classroom me roll number ke hisaab se bolne ka time milta hai – 1 se 2, fir 3 se 4.
 
 ---
 
-### 🔸 **CDMA** (Already covered above)
-
----
 
 # 🧾 **6. IEEE Standards and Wired/Wireless LAN**
 
@@ -168,6 +175,8 @@ Jaise traffic signals traffic ko regulate karte hain, waise hi IEEE standards co
 ---
 
 ## 💻 **Wired LAN Standards**
+
+![alt text](image-17.png)
 
 ### 🔹 **Standard Ethernet (IEEE 802.3)**
 
